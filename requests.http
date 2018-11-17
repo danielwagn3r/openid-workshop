@@ -1,0 +1,2 @@
+# Get OpenID Connect Discovery Document
+GET https://apisummit.eu.auth0.com/.well-known/openid-configuration
