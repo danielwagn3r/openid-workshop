@@ -1,0 +1,35 @@
+#
+# Auth0 Management API
+#
+
+# Get access token
+POST https://apisummit.eu.auth0.com/oauth/token
+Content-Type: application/json
+
+{
+    "client_id": "rOolHLh9eJ7s60DQzK7bpdRPx0wiJCON",
+    "client_secret": "YOUR_CLIENT_SECRET",
+    "audience": "https://apisummit.eu.auth0.com/api/v2/",
+    "grant_type": "client_credentials"
+}
+
+# Get list of clients
+GET https://apisummit.eu.auth0.com/api/v2/clients
+Authorization: Bearer ey....
+
+PATCH https://apisummit.eu.auth0.com/api/v2/clients/U2avzP9EfL2ZjmpbhZlz7Md74CCpHSfJ
+Authorization: Bearer ey....
+Content-Type: application/json
+
+{
+    "grant_types": [
+        "authorization_code",
+        "implicit",
+        "refresh_token",
+        "password",
+        "http://auth0.com/oauth/grant-type/password-realm"
+    ]
+}
+
+GET https://apisummit.eu.auth0.com/api/v2/clients/U2avzP9EfL2ZjmpbhZlz7Md74CCpHSfJ
+Authorization: Bearer ey....
