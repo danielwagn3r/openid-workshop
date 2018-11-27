@@ -1,0 +1,81 @@
+#
+# Authorization Code Grant
+#
+# https://auth0.com/docs/api-auth/tutorials/authorization-code-grant-pkce
+#
+
+
+# Authorize 
+GET https://apisummit.eu.auth0.com/authorize?state=l337&redirect_uri=https%3A%2F%2Flocalhost%3A5000%2Flogin&code_challenge_method=S256&code_challenge=fnHRVKD2D8uvDuxaZOZ5eWwxdi7WTpEiD0azD4tQ_Hk&client_id=4lPn9lftQdlVb2u0oCNxyNu4cHVnQyBL&response_type=code&scope=openid%20email%20profile%20offline_access%20calc%3Asquare&audience=calculator-api
+
+
+###
+
+# Get access token
+POST https://apisummit.eu.auth0.com/oauth/token
+Content-Type: application/json
+
+{
+    "grant_type":"authorization_code",
+    "client_id": "4lPn9lftQdlVb2u0oCNxyNu4cHVnQyBL",
+    "code_verifier": "6QgEbN_9X6wG9U5MZjAxwjXu9SfFs59Es4RSdGi8Djc",
+    "code": "G7_ImUG0Et6pCiMe",
+    "redirect_uri": "https://localhost:5000/login"
+}
+  
+###
+
+# Refresh token
+POST https://apisummit.eu.auth0.com/oauth/token
+Content-Type: application/json
+
+{
+    "grant_type": "refresh_token",
+    "client_id": "4lPn9lftQdlVb2u0oCNxyNu4cHVnQyBL",
+    "client_secret": "QVJ7H0alZ-xv1IFLe_xpdCAZ1vrh9oqmTcjVz_JMnFEPo_OK9ElBbGjKqRrR9gZy",
+    "refresh_token": "VFd76nzBkh862U3oUCbTzCZAOC5MCbTWwS09WnXri2llE"
+}
+
+###
+
+# Double Calucator API
+GET http://localhost:5001/api/double/3
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1FRkdRamN4UkVKRk9FRXdRMFUwTmpjME56bENNa016UmpFMFFUVTNNME16UlVSQk9ERXhNZyJ9.eyJpc3MiOiJodHRwczovL2FwaXN1bW1pdC5ldS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWJmMTMwZGM1YTAwYWYyMjE5ZGM5ZTUzIiwiYXVkIjpbImNhbGN1bGF0b3ItYXBpIiwiaHR0cHM6Ly9hcGlzdW1taXQuZXUuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU0MzM1NzE3NiwiZXhwIjoxNTQzNDQzNTc2LCJhenAiOiI0bFBuOWxmdFFkbFZiMnUwb0NOeHlOdTRjSFZuUXlCTCIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwgY2FsYzpzcXVhcmUgb2ZmbGluZV9hY2Nlc3MifQ.eIqq1hOhYkHaJdXJeUszvMlT0bU2uPN38FDhFrTSQjwQcqqhL6n-49CagYe8QX9IWrTGjiFMJDaVhMOVQ5MYKnaX2dU9gkm9TqdLbYIBcuoy4SpPR9a145wOOMsn2QCcO8UrtgoTF5lMPt0fTlcFgRjGO0PKQmaiBmwm5pIeRUlUsBk5JoZ0EA5hTuPdwWJfWdNxDZ2F1nulYYl53fu5E5IvvNXeRGFasnUTfI3jt1vW0bFw7_P6VYbhzHLojDq2EFvpQu5PhFq0kxv8qJ1eySfH1ybLOq--ZxD2Ws2JA_PnYdN2G1TS6dQIt1QOo5V1qaKmjPB93iT6wHLUi1qHzA
+
+###
+
+# Square Calucator API
+GET http://localhost:5001/api/square/3
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1FRkdRamN4UkVKRk9FRXdRMFUwTmpjME56bENNa016UmpFMFFUVTNNME16UlVSQk9ERXhNZyJ9.eyJpc3MiOiJodHRwczovL2FwaXN1bW1pdC5ldS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWJmMTMwZGM1YTAwYWYyMjE5ZGM5ZTUzIiwiYXVkIjpbImNhbGN1bGF0b3ItYXBpIiwiaHR0cHM6Ly9hcGlzdW1taXQuZXUuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU0MzM1NzE3NiwiZXhwIjoxNTQzNDQzNTc2LCJhenAiOiI0bFBuOWxmdFFkbFZiMnUwb0NOeHlOdTRjSFZuUXlCTCIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwgY2FsYzpzcXVhcmUgb2ZmbGluZV9hY2Nlc3MifQ.eIqq1hOhYkHaJdXJeUszvMlT0bU2uPN38FDhFrTSQjwQcqqhL6n-49CagYe8QX9IWrTGjiFMJDaVhMOVQ5MYKnaX2dU9gkm9TqdLbYIBcuoy4SpPR9a145wOOMsn2QCcO8UrtgoTF5lMPt0fTlcFgRjGO0PKQmaiBmwm5pIeRUlUsBk5JoZ0EA5hTuPdwWJfWdNxDZ2F1nulYYl53fu5E5IvvNXeRGFasnUTfI3jt1vW0bFw7_P6VYbhzHLojDq2EFvpQu5PhFq0kxv8qJ1eySfH1ybLOq--ZxD2Ws2JA_PnYdN2G1TS6dQIt1QOo5V1qaKmjPB93iT6wHLUi1qHzA
+
+###
+
+# Tokeninfo Calucator API
+GET http://localhost:5001/api/tokeninfo
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1FRkdRamN4UkVKRk9FRXdRMFUwTmpjME56bENNa016UmpFMFFUVTNNME16UlVSQk9ERXhNZyJ9.eyJpc3MiOiJodHRwczovL2FwaXN1bW1pdC5ldS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWJmMTMwZGM1YTAwYWYyMjE5ZGM5ZTUzIiwiYXVkIjpbImNhbGN1bGF0b3ItYXBpIiwiaHR0cHM6Ly9hcGlzdW1taXQuZXUuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU0MzM1NzE3NiwiZXhwIjoxNTQzNDQzNTc2LCJhenAiOiI0bFBuOWxmdFFkbFZiMnUwb0NOeHlOdTRjSFZuUXlCTCIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwgY2FsYzpzcXVhcmUgb2ZmbGluZV9hY2Nlc3MifQ.eIqq1hOhYkHaJdXJeUszvMlT0bU2uPN38FDhFrTSQjwQcqqhL6n-49CagYe8QX9IWrTGjiFMJDaVhMOVQ5MYKnaX2dU9gkm9TqdLbYIBcuoy4SpPR9a145wOOMsn2QCcO8UrtgoTF5lMPt0fTlcFgRjGO0PKQmaiBmwm5pIeRUlUsBk5JoZ0EA5hTuPdwWJfWdNxDZ2F1nulYYl53fu5E5IvvNXeRGFasnUTfI3jt1vW0bFw7_P6VYbhzHLojDq2EFvpQu5PhFq0kxv8qJ1eySfH1ybLOq--ZxD2Ws2JA_PnYdN2G1TS6dQIt1QOo5V1qaKmjPB93iT6wHLUi1qHzA
+
+###
+
+# Revoke refesh token
+POST https://apisummit.eu.auth0.com/oauth/revoke
+Content-Type: application/json
+
+{
+    "client_id": "4lPn9lftQdlVb2u0oCNxyNu4cHVnQyBL",
+    "client_secret": "QVJ7H0alZ-xv1IFLe_xpdCAZ1vrh9oqmTcjVz_JMnFEPo_OK9ElBbGjKqRrR9gZy",
+    "token": "VFd76nzBkh862U3oUCbTzCZAOC5MCbTWwS09WnXri2llE",
+    "token_type_hint": "refresh_token"
+}
+
+###
+
+# Refresh token -> fails
+POST https://apisummit.eu.auth0.com/oauth/token
+Content-Type: application/json
+
+{
+    "grant_type": "refresh_token",
+    "client_id": "4lPn9lftQdlVb2u0oCNxyNu4cHVnQyBL",
+    "client_secret": "QVJ7H0alZ-xv1IFLe_xpdCAZ1vrh9oqmTcjVz_JMnFEPo_OK9ElBbGjKqRrR9gZy",
+    "refresh_token": "VFd76nzBkh862U3oUCbTzCZAOC5MCbTWwS09WnXri2llE"
+}
