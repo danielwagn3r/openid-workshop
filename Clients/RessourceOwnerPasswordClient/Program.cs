@@ -80,7 +80,7 @@ namespace RessourceOwnerPasswordClient
 
                 Parameters =
                 {
-                    {"audience","calculator-api"}
+                    {"audience", _configuration["CalculatorApi:ApiIdentifier"]}
                 }
             });
 
