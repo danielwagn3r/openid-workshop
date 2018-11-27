@@ -1,0 +1,19 @@
+#
+# Basics
+#
+
+# OpenID Provider Configuration Request
+# https://openid.net/specs/openid-connect-discovery-1_0.html
+#
+# @name configuration
+GET https://apisummit.eu.auth0.com/.well-known/openid-configuration
+
+
+###
+
+# JSON Web Key Set document
+# https://tools.ietf.org/html/draft-ietf-jose-json-web-key-31
+#
+# @name jwks
+
+GET https://apisummit.eu.auth0.com/.well-known/jwks.json

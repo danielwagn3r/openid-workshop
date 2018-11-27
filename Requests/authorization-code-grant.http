@@ -20,6 +20,7 @@ Content-Type: application/json
     "redirect_uri": "https://localhost:5000/login"
 }
 
+###
 
 # Refresh token
 POST https://apisummit.eu.auth0.com/oauth/token
@@ -32,13 +33,19 @@ Content-Type: application/json
     "refresh_token": "gQkfEAKVFqDb9UCmtOCKJOnbUfZE-5aWiwYHB3O6f2ylE"
 }
 
+###
+
 # Double Calucator API
 GET http://localhost:5001/api/double/3
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1FRkdRamN4UkVKRk9FRXdRMFUwTmpjME56bENNa016UmpFMFFUVTNNME16UlVSQk9ERXhNZyJ9.eyJpc3MiOiJodHRwczovL2FwaXN1bW1pdC5ldS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWJmMTMwZGM1YTAwYWYyMjE5ZGM5ZTUzIiwiYXVkIjpbImNhbGN1bGF0b3ItYXBpIiwiaHR0cHM6Ly9hcGlzdW1taXQuZXUuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU0MzA5NDkyNCwiZXhwIjoxNTQzMTgxMzI0LCJhenAiOiJMaFVqN3dEWWpYTVg4UTJsUlZIMFZ3dkthcDFPakhqVyIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwgY2FsYzpkb3VibGUgb2ZmbGluZV9hY2Nlc3MifQ.BBnYhpxQrymhYgK6sn9WgXJjXIF3Yisc94qK7a2nEvZND3jJNkDXKLVhkDdCSUM2D5gbUSYRRJQ1h26KDEEi0tjtU3vveaHllFAJvgeuTlySbqDcEbJ_7BsW51IzsC-kn6VQ7PnQnRgTUXpRmeHQ_ATDZPGZXciGvqTymCWP3vl56aStQM63-f3jXcH0fZkDhTqVU2Lm-gb3w0V-J0imHfHTMHelxW4oyCw-lSpOLOGTiuIyt65oVk-MCJI3ADtjWvNp5R9cxDOeQXEKOHlIFRxsGAHZkiFbVUwSBwKZYtT1NiyCgwWIEHa4ZcVJ1XKFDZJyP8DwTVN2lO_oMfThnA
 
+###
+
 # Tokeninfo Calucator API
 GET http://localhost:5001/api/tokeninfo
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1FRkdRamN4UkVKRk9FRXdRMFUwTmpjME56bENNa016UmpFMFFUVTNNME16UlVSQk9ERXhNZyJ9.eyJpc3MiOiJodHRwczovL2FwaXN1bW1pdC5ldS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWJmMTMwZGM1YTAwYWYyMjE5ZGM5ZTUzIiwiYXVkIjpbImNhbGN1bGF0b3ItYXBpIiwiaHR0cHM6Ly9hcGlzdW1taXQuZXUuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU0MzA5NDkyNCwiZXhwIjoxNTQzMTgxMzI0LCJhenAiOiJMaFVqN3dEWWpYTVg4UTJsUlZIMFZ3dkthcDFPakhqVyIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwgY2FsYzpkb3VibGUgb2ZmbGluZV9hY2Nlc3MifQ.BBnYhpxQrymhYgK6sn9WgXJjXIF3Yisc94qK7a2nEvZND3jJNkDXKLVhkDdCSUM2D5gbUSYRRJQ1h26KDEEi0tjtU3vveaHllFAJvgeuTlySbqDcEbJ_7BsW51IzsC-kn6VQ7PnQnRgTUXpRmeHQ_ATDZPGZXciGvqTymCWP3vl56aStQM63-f3jXcH0fZkDhTqVU2Lm-gb3w0V-J0imHfHTMHelxW4oyCw-lSpOLOGTiuIyt65oVk-MCJI3ADtjWvNp5R9cxDOeQXEKOHlIFRxsGAHZkiFbVUwSBwKZYtT1NiyCgwWIEHa4ZcVJ1XKFDZJyP8DwTVN2lO_oMfThnA
+
+###
 
 # Revoke refesh token
 POST https://apisummit.eu.auth0.com/oauth/revoke
@@ -50,6 +57,8 @@ Content-Type: application/json
     "token": "gQkfEAKVFqDb9UCmtOCKJOnbUfZE-5aWiwYHB3O6f2ylE",
     "token_type_hint": "refresh_token"
 }
+
+###
 
 # Refresh token -> fails
 POST https://apisummit.eu.auth0.com/oauth/token
