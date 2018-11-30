@@ -2,7 +2,7 @@
 
 API Summit 2018, Berlin
 
-by [Anton Kalcik](https://github.com/akalcik) and [Daniel Wagner](https://github.com/kwaxi)
+by [Anton Kalcik](https://github.com/akalcik) and [Daniel Wagner](https://github.com/danielwagn3r)
 
 ## Prerequisites
 
