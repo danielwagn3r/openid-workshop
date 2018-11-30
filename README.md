@@ -2,11 +2,11 @@
 
 API Summit 2018, Berlin
 
-by [Anton Kalcik](https://github.com/akalcik) and [Daniel Wagner](https://github.com/kwaxi)
+by [Anton Kalcik](https://github.com/akalcik) and [Daniel Wagner](https://github.com/danielwagn3r)
 
 ## Prerequisites
 
-- [Auth0 Account](https://auth0.com/)
+- [Auth0 Tenant](https://auth0.com/)
 - [Visual Studio Code](https://code.visualstudio.com)
 - [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
 - [.NET Core SDK](https://dotnet.microsoft.com/download)
