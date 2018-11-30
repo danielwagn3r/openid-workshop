@@ -70,8 +70,7 @@ namespace SampleMvcApp
                 // Set the correct name claim type
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
-                    NameClaimType = "name",
-                    RoleClaimType = "https://schemas.quickstarts.com/roles"
+                    NameClaimType = "name"
                 };
 
                 options.Events = new OpenIdConnectEvents

@@ -1,8 +1,8 @@
-# Authorization
+# User Profile
 
-This example shows how to allow only users in certain roles to access a particular action.
+This example shows how to extract user profile information from claims and display the user's profile in your application.
 
-You can read a quickstart for this sample [here](https://auth0.com/docs/quickstart/webapp/aspnet-core/04-authorization). 
+You can read a quickstart for this sample [here](https://auth0.com/docs/quickstart/webapp/aspnet-core/03-user-profile). 
 
 ## Requirements
 
@@ -28,14 +28,64 @@ Execute in command line `sh exec.sh` to run the Docker in Linux or macOS, or `.\
 
 ## Important Snippets
 
-### 1. Specify the Roles who can access a particular action
+### 1. Create a View Model to store the Profile
 
 ```csharp
-// /Controllers/HomeController.cs
+// /ViewModels/UserProfileViewModel.cs
 
-[Authorize(Roles = "admin")]
-public IActionResult Admin()
+public class UserProfileViewModel
 {
-    return View();
+    public string EmailAddress { get; set; }
+
+    public string Name { get; set; }
+
+    public string ProfileImage { get; set; }
 }
+```
+
+### 2. Extract profile from claims
+
+```csharp
+// /Controllers/AccountController.cs
+
+[Authorize]
+public IActionResult Profile()
+{
+    return View(new UserProfileViewModel()
+    {
+        Name = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value,
+        EmailAddress = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value,
+        ProfileImage = User.Claims.FirstOrDefault(c => c.Type == "picture")?.Value
+    });
+}
+```
+
+### 3. User Profile view
+
+```html
+<!-- /Views/Accounts/Profile.cshtml -->
+
+@model SampleMvcApp.ViewModels.UserProfileViewModel
+@{
+    ViewData["Title"] = "User Profile";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <h2>@ViewData["Title"].</h2>
+
+            <div class="col-md-2">
+                <img src="@Model.ProfileImage"
+                     alt="" class="img-rounded img-responsive" />
+            </div>
+            <div class="col-md-4">
+                <h3>@Model.Name</h3>
+                <p>
+                    <i class="glyphicon glyphicon-envelope"></i> @Model.EmailAddress
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 ```
