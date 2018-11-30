@@ -13,6 +13,8 @@ Content-Type: application/json
     "grant_type": "client_credentials"
 }
 
+###
+
 # Get list of clients
 GET https://apisummit.eu.auth0.com/api/v2/clients
 Authorization: Bearer ey....
@@ -30,6 +32,8 @@ Content-Type: application/json
         "http://auth0.com/oauth/grant-type/password-realm"
     ]
 }
+
+###
 
 GET https://apisummit.eu.auth0.com/api/v2/clients/U2avzP9EfL2ZjmpbhZlz7Md74CCpHSfJ
 Authorization: Bearer ey....
