@@ -1,0 +1,20 @@
+{
+  "name": "helpers",
+  "version": "1.0.0",
+  "description": "Helper scripts for OpenID Connect/OAuth 2.0 workshop",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "json",
+    "oidc",
+    "pkce",
+    "x-www-form-urlencoded"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "base64url": "^3.0.1",
+    "querystring": "^0.2.0"
+  }
+}
