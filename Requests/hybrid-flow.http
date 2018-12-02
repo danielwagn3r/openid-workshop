@@ -1,42 +1,85 @@
+##########
 #
 # Implict Flow
 #
 # https://auth0.com/docs/api-auth/tutorials/hybrid-flow
 #
+##########
+
+
+#####
+# Configuration --> use Regular Web App in Auth0
+
+@tenant = apisummit.eu.auth0.com
+@client_id= zQ75pIPUblzH2fLIPWSkewF20gB1KxQS
+@client_secret = ePpxmxaWTe8aDZsjJlQY2LjRxGhcTP3iuip95LAOzMTTmZuGjc-oadgd3ayzMV-5
+@audience = calculator-api
+
+#
+#####
 
 
 # Get identity and access token
-GET https://apisummit.eu.auth0.com/authorize?scope=openid%20email%20profile%20calc%3Asquare&audience=calculator-api&response_type=code%20id_token%20token&client_id=evhy8BsdvFn3YxO7138y4G0QL2FOw2hT&redirect_uri=https://localhost:5002/signincallback&nonce=12345789&prompt=consent
+GET https://apisummit.eu.auth0.com/authorize?scope=openid%20email%20profile%20calc%3Asquare%20offline_access&audience=calculator-api&response_type=code%20id_token%20token&client_id=zQ75pIPUblzH2fLIPWSkewF20gB1KxQS&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fsignin-auth0&nonce=12345789&prompt=consent
+
+@access_token = eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1FRkdRamN4UkVKRk9FRXdRMFUwTmpjME56bENNa016UmpFMFFUVTNNME16UlVSQk9ERXhNZyJ9.eyJpc3MiOiJodHRwczovL2FwaXN1bW1pdC5ldS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWJmMTMwZGM1YTAwYWYyMjE5ZGM5ZTUzIiwiYXVkIjpbImNhbGN1bGF0b3ItYXBpIiwiaHR0cHM6Ly9hcGlzdW1taXQuZXUuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU0Mzc4OTE2OSwiZXhwIjoxNTQzNzk2MzY5LCJhenAiOiJ6UTc1cElQVWJsekgyZkxJUFdTa2V3RjIwZ0IxS3hRUyIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwgY2FsYzpzcXVhcmUgb2ZmbGluZV9hY2Nlc3MifQ.QkpBDJg1Q17LmuMcZ5hc9SQT3H2hY5cGsKw5-EFFf_iSURRBj5RNk135I21k2rLi6XgC_sBc3uSA6fajzmE7ZTPiwZAs6QTBHhBhmbCg6UEybLwwq_Zbrc06bVpdDEybP4ldrgqf7DmTYG4CMTf5Z0lNdmOThdOCGV7N6l04lWW0mDwRzInSvsW-NzultIR_AW2Eo8SQZoRVGsVU_xKH5n8wbq9w9I92VnKcwqnp9fEbDNGHpFIE_xGWyQto52H0CjLaS56RFExZiDcaTaiE94ejADqGlWBeR-8bhkBW1TtjnuTGmqLO3_Slkg-j4RmjKxy7xJBLppl2a32qnss2eg
+@id_token = eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1FRkdRamN4UkVKRk9FRXdRMFUwTmpjME56bENNa016UmpFMFFUVTNNME16UlVSQk9ERXhNZyJ9.eyJuaWNrbmFtZSI6ImpvaG5kb2UiLCJuYW1lIjoiam9obmRvZUBhY21lLmluYyIsInBpY3R1cmUiOiJodHRwczovL3MuZ3JhdmF0YXIuY29tL2F2YXRhci9mYzAzZjhkODZiODdmODA0NDNkMjIzNGQxYjVhYWZlZD9zPTQ4MCZyPXBnJmQ9aHR0cHMlM0ElMkYlMkZjZG4uYXV0aDAuY29tJTJGYXZhdGFycyUyRmpvLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDE4LTEyLTAyVDIxOjU5OjMyLjY4M1oiLCJlbWFpbCI6ImpvaG5kb2VAYWNtZS5pbmMiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImlzcyI6Imh0dHBzOi8vYXBpc3VtbWl0LmV1LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1YmYxMzBkYzVhMDBhZjIyMTlkYzllNTMiLCJhdWQiOiJ6UTc1cElQVWJsekgyZkxJUFdTa2V3RjIwZ0IxS3hRUyIsImlhdCI6MTU0Mzc4OTE2OSwiZXhwIjoxNTQzODI1MTY5LCJhdF9oYXNoIjoiaEVQQmRmNHM5R1NGNFpGNkhRYU5fQSIsImNfaGFzaCI6IkZIaWppZjNDUzRUYmE2R3k3RTVJRnciLCJub25jZSI6IjEyMzQ1Nzg5In0.uq76Zu2wS8SmgnT7Ghibvl09BsWN0mMGsuN8eQKuE7u5svLxKBAluiD5NsjvhATsECdjRYJTUvSYos_VLhhJ6H-PaNegsAW2_josm4DdiAVYoiuQBx1RJvmJ47AuhGwStDdtTpphjv7AlGq7vylP9USsWPV8_vQT6ElM5pKP77tb6aaj-qjMXUsknyGXBT14rWgj_FwhkdgOoiTvNGkZbhVR6jxF8_KUULlN9B43fjMzgjw_0UHDQLVDQ6YYEDlJUauLogIhjz_CWfcOSeEDFegVtQAfXfX2APF5MNZPFz278t_rxpwq278D-qBtRX3o_gD64G3j1PoPiB0iCgRE5w
+@code = krNy6dAqUDxNbc7N
 
 ###
 
 # Get access token
-
-POST https://apisummit.eu.auth0.com/oauth/token
+# @name token
+POST https://{{tenant}}/oauth/token
 Content-Type: application/json
 
 {
     "grant_type":"authorization_code",
-    "client_id": "evhy8BsdvFn3YxO7138y4G0QL2FOw2hT",
-    "client_secret": "49DxeCYmhYhTcxQXvmszNqtqY1XAqwwR_d9iEvMTVj28OoBIOYG79UrxXKCdnKSy",
-    "code": "GqDWWT4ZurBrMHyO",
-    "redirect_uri": "https://localhost:5002/signincallback"
+    "client_id": "{{client_id}}",
+    "client_secret": "{{client_secret}}",
+    "code": "{{code}}",
+    "redirect_uri": "http://localhost:3000/signin-auth0"
 }
 
-###
+@access_token2 = {{token.response.body.$.access_token}}
+@id_token2 = {{token.response.body.$.id_token}}
+@refresh_token2 = {{token.response.body.$.refresh_token}}
 
-# Double Calucator API
-GET http://localhost:5001/api/double/3
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1FRkdRamN4UkVKRk9FRXdRMFUwTmpjME56bENNa016UmpFMFFUVTNNME16UlVSQk9ERXhNZyJ9.eyJpc3MiOiJodHRwczovL2FwaXN1bW1pdC5ldS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWJmMTMwZGM1YTAwYWYyMjE5ZGM5ZTUzIiwiYXVkIjpbImNhbGN1bGF0b3ItYXBpIiwiaHR0cHM6Ly9hcGlzdW1taXQuZXUuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU0MjgzOTIyMiwiZXhwIjoxNTQyODQ2NDIyLCJhenAiOiJldmh5OEJzZHZGbjNZeE83MTM4eTRHMFFMMkZPdzJoVCIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwgY2FsYzpzcXVhcmUifQ.eFIDvA7rVuwlBYRsI-UfdGfGZSWrVH0__DoRefRDgbCndvoy6cXU0bSBu8dfeBfQHQ8UWMbEm6ixTZho7CYPL0QaFOadupQ5a7IYs2p14jzrsoF_59qRN4Yd8M5Dw4MCDYEnxKgjPBkScAqUgO97BlzKD8c7u96iWYxO9lx4iyjJp2361-heoewgn0di-YKoeQ_Y7vZPwh7-jBH-OQEMKIth6sUoFuU-9hP_h40xIr0Hou3Eqqo2Fz1R3kV7-KzHDGc1it8kR-kTrTuRyrCFXj9nvNHWkoJ6tC2JVS7c-rfYkehfEQjHUvExrU1Wb4-lVhTFrsAPPfrVUQvlobKaqg
-
-###
-
-# Square Calucator API
-GET http://localhost:5001/api/square/3
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1FRkdRamN4UkVKRk9FRXdRMFUwTmpjME56bENNa016UmpFMFFUVTNNME16UlVSQk9ERXhNZyJ9.eyJpc3MiOiJodHRwczovL2FwaXN1bW1pdC5ldS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWJmMTMwZGM1YTAwYWYyMjE5ZGM5ZTUzIiwiYXVkIjpbImNhbGN1bGF0b3ItYXBpIiwiaHR0cHM6Ly9hcGlzdW1taXQuZXUuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU0MjgzOTIyMiwiZXhwIjoxNTQyODQ2NDIyLCJhenAiOiJldmh5OEJzZHZGbjNZeE83MTM4eTRHMFFMMkZPdzJoVCIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwgY2FsYzpzcXVhcmUifQ.eFIDvA7rVuwlBYRsI-UfdGfGZSWrVH0__DoRefRDgbCndvoy6cXU0bSBu8dfeBfQHQ8UWMbEm6ixTZho7CYPL0QaFOadupQ5a7IYs2p14jzrsoF_59qRN4Yd8M5Dw4MCDYEnxKgjPBkScAqUgO97BlzKD8c7u96iWYxO9lx4iyjJp2361-heoewgn0di-YKoeQ_Y7vZPwh7-jBH-OQEMKIth6sUoFuU-9hP_h40xIr0Hou3Eqqo2Fz1R3kV7-KzHDGc1it8kR-kTrTuRyrCFXj9nvNHWkoJ6tC2JVS7c-rfYkehfEQjHUvExrU1Wb4-lVhTFrsAPPfrVUQvlobKaqg
 
 ###
 
 # Tokeninfo Calucator API
 GET http://localhost:5001/api/tokeninfo
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1FRkdRamN4UkVKRk9FRXdRMFUwTmpjME56bENNa016UmpFMFFUVTNNME16UlVSQk9ERXhNZyJ9.eyJpc3MiOiJodHRwczovL2FwaXN1bW1pdC5ldS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWJmMTMwZGM1YTAwYWYyMjE5ZGM5ZTUzIiwiYXVkIjpbImNhbGN1bGF0b3ItYXBpIiwiaHR0cHM6Ly9hcGlzdW1taXQuZXUuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU0MjgzOTIyMiwiZXhwIjoxNTQyODQ2NDIyLCJhenAiOiJldmh5OEJzZHZGbjNZeE83MTM4eTRHMFFMMkZPdzJoVCIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwgY2FsYzpzcXVhcmUifQ.eFIDvA7rVuwlBYRsI-UfdGfGZSWrVH0__DoRefRDgbCndvoy6cXU0bSBu8dfeBfQHQ8UWMbEm6ixTZho7CYPL0QaFOadupQ5a7IYs2p14jzrsoF_59qRN4Yd8M5Dw4MCDYEnxKgjPBkScAqUgO97BlzKD8c7u96iWYxO9lx4iyjJp2361-heoewgn0di-YKoeQ_Y7vZPwh7-jBH-OQEMKIth6sUoFuU-9hP_h40xIr0Hou3Eqqo2Fz1R3kV7-KzHDGc1it8kR-kTrTuRyrCFXj9nvNHWkoJ6tC2JVS7c-rfYkehfEQjHUvExrU1Wb4-lVhTFrsAPPfrVUQvlobKaqg
+Authorization: Bearer {{access_token}}
+
+###
+
+# Tokeninfo Calucator API
+GET http://localhost:5001/api/tokeninfo
+Authorization: Bearer {{access_token2}}
+
+###
+
+# Double Calucator API
+GET http://localhost:5001/api/double/3
+Authorization: Bearer {{access_token}}
+
+###
+
+# Square Calucator API
+GET http://localhost:5001/api/square/3
+Authorization: Bearer {{access_token}}
+
+###
+
+# Refresh token
+# @name token2
+POST https://{{tenant}}/oauth/token
+Content-Type: application/json
+
+{
+    "grant_type": "refresh_token",
+    "client_id": "{{client_id}}",
+    "client_secret": "{{client_secret}}",
+    "refresh_token": "{{refresh_token2}}"
+}

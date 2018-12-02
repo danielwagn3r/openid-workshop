@@ -20,14 +20,16 @@
 
 
 # Get authorization Code
-GET https://apisummit.eu.auth0.com/authorize?audience=calculator-api&scope=openid%20email%20profile%20offline_access%20calc%3Adouble&response_type=code&client_id=LhUj7wDYjXMX8Q2lRVH0VwvKap1OjHjW&redirect_uri=https://localhost:3000/signin-auth0&state=l337&prompt=consent
+GET https://apisummit.eu.auth0.com/authorize?audience=calculator-api&scope=openid%20email%20profile%20offline_access%20calc%3Adouble&response_type=code&client_id=LhUj7wDYjXMX8Q2lRVH0VwvKap1OjHjW&redirect_uri=http://localhost:3000/signin-auth0&state=l337&prompt=consent
 
-@code = Wc2BZu0k-8Y1FW-8
+@code = NZsRswRR4z_d5sWe
+
+###
 
 
 # Get access token
 # @name token
-POST https://apisummit.eu.auth0.com/oauth/token
+POST https://{{tenant}}/oauth/token
 Content-Type: application/json
 
 {
@@ -47,7 +49,7 @@ Content-Type: application/json
 
 # Refresh token
 # @name token2
-POST https://apisummit.eu.auth0.com/oauth/token
+POST https://{{tenant}}/oauth/token
 Content-Type: application/json
 
 {
@@ -81,7 +83,7 @@ Authorization: Bearer {{access_token2}}
 ###
 
 # Revoke refesh token
-POST https://apisummit.eu.auth0.com/oauth/revoke
+POST https://{{tenant}}/oauth/revoke
 Content-Type: application/json
 
 {
@@ -94,7 +96,7 @@ Content-Type: application/json
 ###
 
 # Refresh token -> fails
-POST https://apisummit.eu.auth0.com/oauth/token
+POST https://{{tenant}}/oauth/token
 Content-Type: application/json
 
 {

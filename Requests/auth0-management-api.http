@@ -22,7 +22,7 @@
 
 # Get access token
 # @name token
-POST https://apisummit.eu.auth0.com/oauth/token
+POST https://{{tenant}}/oauth/token
 Content-Type: application/json
 
 {
@@ -37,12 +37,12 @@ Content-Type: application/json
 ###
 
 # Get list of clients
-GET https://apisummit.eu.auth0.com/api/v2/clients/{{client_id}}
+GET https://{{tenant}}/api/v2/clients/{{client_id}}
 Authorization: Bearer {{access_token}}
 
 ###
 
-PATCH https://apisummit.eu.auth0.com/api/v2/clients/{{client_id}}
+PATCH https://{{tenant}}/api/v2/clients/{{client_id}}
 Authorization: Bearer {{access_token}}
 Content-Type: application/json
 
@@ -58,5 +58,5 @@ Content-Type: application/json
 
 ###
 
-GET https://apisummit.eu.auth0.com/api/v2/clients/{{client_id}}
+GET https://{{tenant}}/api/v2/clients/{{client_id}}
 Authorization: Bearer {{access_token}}

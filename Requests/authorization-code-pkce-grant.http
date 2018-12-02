@@ -31,7 +31,7 @@ GET https://apisummit.eu.auth0.com/authorize?state=l337&redirect_uri=https%3A%2F
 
 # Get access token
 # @name token
-POST https://apisummit.eu.auth0.com/oauth/token
+POST https://{{tenant}}/oauth/token
 Content-Type: application/json
 
 {
@@ -50,7 +50,7 @@ Content-Type: application/json
 ###
 
 # Get access token (invalid grant)
-POST https://apisummit.eu.auth0.com/oauth/token
+POST https://{{tenant}}/oauth/token
 Content-Type: application/json
 
 {
@@ -64,7 +64,7 @@ Content-Type: application/json
 ###
 
 # Refresh token
-POST https://apisummit.eu.auth0.com/oauth/token
+POST https://{{tenant}}/oauth/token
 Content-Type: application/json
 
 {
@@ -96,7 +96,7 @@ Authorization: Bearer {{access_token}}
 ###
 
 # Revoke refesh token
-POST https://apisummit.eu.auth0.com/oauth/revoke
+POST https://{{tenant}}/oauth/revoke
 Content-Type: application/json
 
 {
@@ -109,7 +109,7 @@ Content-Type: application/json
 ###
 
 # Refresh token -> fails
-POST https://apisummit.eu.auth0.com/oauth/token
+POST https://{{tenant}}/oauth/token
 Content-Type: application/json
 
 {
