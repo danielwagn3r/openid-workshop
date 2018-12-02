@@ -6,7 +6,7 @@
 
 
 # Get authorization Code
-GET https://apisummit.eu.auth0.com/authorize?audience=calculator-api&scope=openid%20email%20profile%20offline_access%20calc%3Adouble&response_type=code&client_id=LhUj7wDYjXMX8Q2lRVH0VwvKap1OjHjW&redirect_uri=https://localhost:5000/login&state=l337
+GET https://apisummit.eu.auth0.com/authorize?audience=calculator-api&scope=openid%20email%20profile%20offline_access%20calc%3Adouble&response_type=code&client_id=LhUj7wDYjXMX8Q2lRVH0VwvKap1OjHjW&redirect_uri=https://localhost:3000/signin-auth0&state=l337&prompt=consent
 
 # Get access token
 POST https://apisummit.eu.auth0.com/oauth/token
@@ -17,7 +17,7 @@ Content-Type: application/json
     "client_id": "LhUj7wDYjXMX8Q2lRVH0VwvKap1OjHjW",
     "client_secret": "c9UGiVFMkKor-ZA5XVjk12h5l0Qki7jjXaqg1Cze_thAq3FlDyGMBlV_eMpyuEMk",
     "code": "l54rIm0Aaqbn8x_6",
-    "redirect_uri": "https://localhost:5000/login"
+    "redirect_uri": "http://localhost:3000/signin-auth0"
 }
 
 ###
