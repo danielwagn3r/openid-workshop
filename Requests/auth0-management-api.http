@@ -1,26 +1,49 @@
+##########
 #
 # Auth0 Management API
 #
+# https://auth0.com/docs/api/management/v2
+#
+##########
+
+
+#####
+# Configuration --> use Admin Api Client
+
+@tenant = apisummit.eu.auth0.com
+@admin_client_id= rOolHLh9eJ7s60DQzK7bpdRPx0wiJCON
+@admin_client_secret = YOUR_CLIENT_SECRET
+
+@client_id = U2avzP9EfL2ZjmpbhZlz7Md74CCpHSfJ
+
+#
+#####
+
 
 # Get access token
+# @name token
 POST https://apisummit.eu.auth0.com/oauth/token
 Content-Type: application/json
 
 {
-    "client_id": "rOolHLh9eJ7s60DQzK7bpdRPx0wiJCON",
-    "client_secret": "YOUR_CLIENT_SECRET",
+    "client_id": "{{admin_client_id}}",
+    "client_secret": "{{admin_client_secret}}",
     "audience": "https://apisummit.eu.auth0.com/api/v2/",
     "grant_type": "client_credentials"
 }
 
+@access_token = {{token.response.body.$.access_token}}
+
 ###
 
 # Get list of clients
-GET https://apisummit.eu.auth0.com/api/v2/clients
-Authorization: Bearer ey....
+GET https://apisummit.eu.auth0.com/api/v2/clients/{{client_id}}
+Authorization: Bearer {{access_token}}
 
-PATCH https://apisummit.eu.auth0.com/api/v2/clients/U2avzP9EfL2ZjmpbhZlz7Md74CCpHSfJ
-Authorization: Bearer ey....
+###
+
+PATCH https://apisummit.eu.auth0.com/api/v2/clients/{{client_id}}
+Authorization: Bearer {{access_token}}
 Content-Type: application/json
 
 {
@@ -35,5 +58,5 @@ Content-Type: application/json
 
 ###
 
-GET https://apisummit.eu.auth0.com/api/v2/clients/U2avzP9EfL2ZjmpbhZlz7Md74CCpHSfJ
-Authorization: Bearer ey....
+GET https://apisummit.eu.auth0.com/api/v2/clients/{{client_id}}
+Authorization: Bearer {{access_token}}
