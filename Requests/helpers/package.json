@@ -15,7 +15,7 @@
   "license": "MIT",
   "dependencies": {
     "base64url": "^3.0.1",
-    "express": "^3.0.1",
+    "express": "^4.16.4",
     "querystring": "^0.2.0"
   }
 }
