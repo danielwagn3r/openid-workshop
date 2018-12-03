@@ -1,72 +1,107 @@
+##########
 #
 # Authorization Code Grant
 #
 # https://auth0.com/docs/api-auth/tutorials/authorization-code-grant
 #
+##########
+
+
+#####
+# Configuration --> use Regular Web App in Auth0
+
+@tenant = apisummit.eu.auth0.com
+@client_id= LhUj7wDYjXMX8Q2lRVH0VwvKap1OjHjW
+@client_secret = c9UGiVFMkKor-ZA5XVjk12h5l0Qki7jjXaqg1Cze_thAq3FlDyGMBlV_eMpyuEMk
+@audience = calculator-api
+
+#
+#####
 
 
 # Get authorization Code
-GET https://apisummit.eu.auth0.com/authorize?audience=calculator-api&scope=openid%20email%20profile%20offline_access%20calc%3Adouble&response_type=code&client_id=LhUj7wDYjXMX8Q2lRVH0VwvKap1OjHjW&redirect_uri=https://localhost:3000/signin-auth0&state=l337&prompt=consent
+GET https://apisummit.eu.auth0.com/authorize?audience=calculator-api&scope=openid%20email%20profile%20offline_access%20calc%3Adouble&response_type=code&client_id=LhUj7wDYjXMX8Q2lRVH0VwvKap1OjHjW&redirect_uri=http://localhost:3000/signin-auth0&state=l337&prompt=consent
+
+@code = NZsRswRR4z_d5sWe
+
+###
+
 
 # Get access token
-POST https://apisummit.eu.auth0.com/oauth/token
+# @name token
+POST https://{{tenant}}/oauth/token
 Content-Type: application/json
 
 {
     "grant_type": "authorization_code",
-    "client_id": "LhUj7wDYjXMX8Q2lRVH0VwvKap1OjHjW",
-    "client_secret": "c9UGiVFMkKor-ZA5XVjk12h5l0Qki7jjXaqg1Cze_thAq3FlDyGMBlV_eMpyuEMk",
-    "code": "l54rIm0Aaqbn8x_6",
+    "client_id": "{{client_id}}",
+    "client_secret": "{{client_secret}}",
+    "code": "{{code}}",
     "redirect_uri": "http://localhost:3000/signin-auth0"
 }
+
+@access_token = {{token.response.body.$.access_token}}
+@id_token = {{token.response.body.$.id_token}}
+@refresh_token = {{token.response.body.$.refresh_token}}
+
 
 ###
 
 # Refresh token
-POST https://apisummit.eu.auth0.com/oauth/token
+# @name token2
+POST https://{{tenant}}/oauth/token
 Content-Type: application/json
 
 {
     "grant_type": "refresh_token",
-    "client_id": "LhUj7wDYjXMX8Q2lRVH0VwvKap1OjHjW",
-    "client_secret": "c9UGiVFMkKor-ZA5XVjk12h5l0Qki7jjXaqg1Cze_thAq3FlDyGMBlV_eMpyuEMk",
-    "refresh_token": "gQkfEAKVFqDb9UCmtOCKJOnbUfZE-5aWiwYHB3O6f2ylE"
+    "client_id": "{{client_id}}",
+    "client_secret": "{{client_secret}}",
+    "refresh_token": "{{refresh_token}}"
 }
+
+@access_token2 = {{token2.response.body.$.access_token}}
+@id_token2 = {{token2.response.body.$.id_token}}
 
 ###
 
 # Double Calucator API
 GET http://localhost:5001/api/double/3
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1FRkdRamN4UkVKRk9FRXdRMFUwTmpjME56bENNa016UmpFMFFUVTNNME16UlVSQk9ERXhNZyJ9.eyJpc3MiOiJodHRwczovL2FwaXN1bW1pdC5ldS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWJmMTMwZGM1YTAwYWYyMjE5ZGM5ZTUzIiwiYXVkIjpbImNhbGN1bGF0b3ItYXBpIiwiaHR0cHM6Ly9hcGlzdW1taXQuZXUuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU0MzA5NDkyNCwiZXhwIjoxNTQzMTgxMzI0LCJhenAiOiJMaFVqN3dEWWpYTVg4UTJsUlZIMFZ3dkthcDFPakhqVyIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwgY2FsYzpkb3VibGUgb2ZmbGluZV9hY2Nlc3MifQ.BBnYhpxQrymhYgK6sn9WgXJjXIF3Yisc94qK7a2nEvZND3jJNkDXKLVhkDdCSUM2D5gbUSYRRJQ1h26KDEEi0tjtU3vveaHllFAJvgeuTlySbqDcEbJ_7BsW51IzsC-kn6VQ7PnQnRgTUXpRmeHQ_ATDZPGZXciGvqTymCWP3vl56aStQM63-f3jXcH0fZkDhTqVU2Lm-gb3w0V-J0imHfHTMHelxW4oyCw-lSpOLOGTiuIyt65oVk-MCJI3ADtjWvNp5R9cxDOeQXEKOHlIFRxsGAHZkiFbVUwSBwKZYtT1NiyCgwWIEHa4ZcVJ1XKFDZJyP8DwTVN2lO_oMfThnA
+Authorization: Bearer {{access_token}}
 
 ###
 
 # Tokeninfo Calucator API
 GET http://localhost:5001/api/tokeninfo
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1FRkdRamN4UkVKRk9FRXdRMFUwTmpjME56bENNa016UmpFMFFUVTNNME16UlVSQk9ERXhNZyJ9.eyJpc3MiOiJodHRwczovL2FwaXN1bW1pdC5ldS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWJmMTMwZGM1YTAwYWYyMjE5ZGM5ZTUzIiwiYXVkIjpbImNhbGN1bGF0b3ItYXBpIiwiaHR0cHM6Ly9hcGlzdW1taXQuZXUuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU0MzA5NDkyNCwiZXhwIjoxNTQzMTgxMzI0LCJhenAiOiJMaFVqN3dEWWpYTVg4UTJsUlZIMFZ3dkthcDFPakhqVyIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwgY2FsYzpkb3VibGUgb2ZmbGluZV9hY2Nlc3MifQ.BBnYhpxQrymhYgK6sn9WgXJjXIF3Yisc94qK7a2nEvZND3jJNkDXKLVhkDdCSUM2D5gbUSYRRJQ1h26KDEEi0tjtU3vveaHllFAJvgeuTlySbqDcEbJ_7BsW51IzsC-kn6VQ7PnQnRgTUXpRmeHQ_ATDZPGZXciGvqTymCWP3vl56aStQM63-f3jXcH0fZkDhTqVU2Lm-gb3w0V-J0imHfHTMHelxW4oyCw-lSpOLOGTiuIyt65oVk-MCJI3ADtjWvNp5R9cxDOeQXEKOHlIFRxsGAHZkiFbVUwSBwKZYtT1NiyCgwWIEHa4ZcVJ1XKFDZJyP8DwTVN2lO_oMfThnA
+Authorization: Bearer {{access_token}}
+
+###
+
+# Tokeninfo Calucator API
+GET http://localhost:5001/api/tokeninfo
+Authorization: Bearer {{access_token2}}
 
 ###
 
 # Revoke refesh token
-POST https://apisummit.eu.auth0.com/oauth/revoke
+POST https://{{tenant}}/oauth/revoke
 Content-Type: application/json
 
 {
-    "client_id": "LhUj7wDYjXMX8Q2lRVH0VwvKap1OjHjW",
-    "client_secret": "c9UGiVFMkKor-ZA5XVjk12h5l0Qki7jjXaqg1Cze_thAq3FlDyGMBlV_eMpyuEMk",
-    "token": "gQkfEAKVFqDb9UCmtOCKJOnbUfZE-5aWiwYHB3O6f2ylE",
+    "client_id": "{{client_id}}",
+    "client_secret": "{{client_secret}}",
+    "token": "{{refresh_token}}",
     "token_type_hint": "refresh_token"
 }
 
 ###
 
 # Refresh token -> fails
-POST https://apisummit.eu.auth0.com/oauth/token
+POST https://{{tenant}}/oauth/token
 Content-Type: application/json
 
 {
     "grant_type": "refresh_token",
-    "client_id": "LhUj7wDYjXMX8Q2lRVH0VwvKap1OjHjW",
-    "client_secret": "c9UGiVFMkKor-ZA5XVjk12h5l0Qki7jjXaqg1Cze_thAq3FlDyGMBlV_eMpyuEMk",
-    "refresh_token": "gQkfEAKVFqDb9UCmtOCKJOnbUfZE-5aWiwYHB3O6f2ylE"
+    "client_id": "{{client_id}}",
+    "client_secret": "{{client_secret}}",
+    "refresh_token": "{{refresh_token}}"
 }
