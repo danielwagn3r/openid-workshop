@@ -8,7 +8,7 @@
 
 
 #####
-# Configuration --> use Regular Web App in Auth0
+# Configuration --> use Single Page App in Auth0
 
 @tenant = apisummit.eu.auth0.com
 @client_id= LhUj7wDYjXMX8Q2lRVH0VwvKap1OjHjW
@@ -19,7 +19,7 @@
 
 
 # Get identity and access token
-GET https://apisummit.eu.auth0.com/authorize?scope=openid%20email%20profile%20calc%3Asquare&audience=calculator-api&response_type=id_token%20token&client_id=evhy8BsdvFn3YxO7138y4G0QL2FOw2hT&redirect_uri=https://localhost:5002/signincallback&nonce=12345789&prompt=consent
+GET https://apisummit.eu.auth0.com/authorize?scope=openid%20email%20profile%20calc%3Asquare&audience=calculator-api&response_type=id_token%20token&client_id=evhy8BsdvFn3YxO7138y4G0QL2FOw2hT&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fsignin-auth0&nonce=12345789&prompt=consent
 
 @access_token = eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1FRkdRamN4UkVKRk9FRXdRMFUwTmpjME56bENNa016UmpFMFFUVTNNME16UlVSQk9ERXhNZyJ9.eyJpc3MiOiJodHRwczovL2FwaXN1bW1pdC5ldS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWJmMTMwZGM1YTAwYWYyMjE5ZGM5ZTUzIiwiYXVkIjpbImNhbGN1bGF0b3ItYXBpIiwiaHR0cHM6Ly9hcGlzdW1taXQuZXUuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU0Mzc4Nzk3NiwiZXhwIjoxNTQzNzk1MTc2LCJhenAiOiJldmh5OEJzZHZGbjNZeE83MTM4eTRHMFFMMkZPdzJoVCIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwgY2FsYzpzcXVhcmUifQ.T3XM7opQEijQcfx8Xi3NERJ4H0e2RmV8tkdFCkc8v5C6hpf3Xc-eqsfTLPhvn4stDQ0b4Miauo0WMvuUo6eh9PBay2xsX_sacL8bvJGgL1G55zjrLmRwaeL7KYsZ-H3BuLWzO1E_R6ykMHL_RrzaCAadbWd_HorZ3UHM6AiutUTPWLIDnhOkHZJ-vlF49IwsIV8V_USaggSJgacdfsCUjCNjqTNPUOVRAJOFa_mUM_w91Bbf5DGJtgseP3nstU-egZKpPpu3nraIJZWZ7p27qh9zPIiacGBxxLC1WsD3aG7rugVomjEINR-aEsObXhlWSYInTLcFoMDRyKHmnYdRFw
 
