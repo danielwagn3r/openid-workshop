@@ -36,7 +36,13 @@ Content-Type: application/json
 
 ###
 
-# Get list of clients
+# Get all clients
+GET https://{{tenant}}/api/v2/clients
+Authorization: Bearer {{access_token}}
+
+###
+
+# Get a client
 GET https://{{tenant}}/api/v2/clients/{{client_id}}
 Authorization: Bearer {{access_token}}
 
