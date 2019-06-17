@@ -1,0 +1,18 @@
+##########
+#
+# Implict Flow
+#
+# https://auth0.com/learn/device-flow/#!
+#
+##########
+
+
+#####
+# See URL for demo
+
+@tenant = apisummit.eu.auth0.com
+@client_id= 
+@client_secret = 
+
+#
+#####
