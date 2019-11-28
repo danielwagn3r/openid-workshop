@@ -11,8 +11,8 @@
 # Configuration --> use Admin Api Client
 
 @tenant = apisummit.eu.auth0.com
-@admin_client_id= rOolHLh9eJ7s60DQzK7bpdRPx0wiJCON
-@admin_client_secret = YOUR_CLIENT_SECRET
+@admin_client_id= PkYF3L4dYwsL7v7KHSF0uO2tP1iZPw2t
+@admin_client_secret = CLYYR-lm3_XyINAmtSyD_x-LSObnL6O08lTkVLgyxFdIbOJt_bFvvZ5Ofhlac0RJ
 
 @client_id = U2avzP9EfL2ZjmpbhZlz7Md74CCpHSfJ
 
@@ -42,9 +42,126 @@ Authorization: Bearer {{access_token}}
 
 ###
 
-# Get a client
-GET https://{{tenant}}/api/v2/clients/{{client_id}}
+# Create machine-to-machine client (simple)
+# @name create_m2m_simple
+POST https://{{tenant}}/api/v2/clients
 Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+  "name": "Client simple",
+  "token_endpoint_auth_method": "client_secret_post",
+  "app_type": "non_interactive",
+  "grant_types": [
+    "authorization_code",
+    "implicit",
+    "refresh_token",
+    "client_credentials"
+  ],
+  "is_first_party": true
+}
+
+@m2m_simple_client_id = {{create_m2m_simple.response.body.$.client_id}}
+
+###
+
+# Create client grant
+
+POST https://{{tenant}}/api/v2/client-grants
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+  "client_id": "{{m2m_simple_client_id}}",
+  "audience": "calculator-api",
+  "scope": [
+    "calc:double"
+  ]
+}
+
+###
+
+# Create machine-to-machine client (advanced)
+# @name create_m2m_advanced
+POST https://{{tenant}}/api/v2/clients
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+  "name": "Client advanced",
+  "token_endpoint_auth_method": "client_secret_post",
+  "app_type": "non_interactive",
+  "grant_types": [
+    "authorization_code",
+    "implicit",
+    "refresh_token",
+    "client_credentials"
+  ],
+  "is_first_party": true
+}
+
+@m2m_advanced_client_id = {{create_m2m_advanced.response.body.$.client_id}}
+
+###
+
+# Create client grant
+
+POST https://{{tenant}}/api/v2/client-grants
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+  "client_id": "{{m2m_advanced_client_id}}",
+  "audience": "calculator-api",
+  "scope": [
+    "calc:double",
+    "calc:square"
+  ]
+}
+
+###
+
+# Create Ressource Owner Password App
+# @name create_ropc
+POST https://{{tenant}}/api/v2/clients
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+    "name": "Ressource Owner App",
+    "token_endpoint_auth_method": "client_secret_post",
+    "oidc_conformant": true,
+    "token_endpoint_auth_method": "client_secret_post",
+    "app_type": "regular_web",
+    "grant_types": [
+        "authorization_code",
+        "client_credentials",
+        "http://auth0.com/oauth/grant-type/password-realm",
+        "implicit",
+        "password",
+        "refresh_token"
+    ],
+    "is_first_party": true
+}
+
+@ropc_client_id = {{create_ropc.response.body.$.client_id}}
+
+###
+
+# Create client grant
+
+POST https://{{tenant}}/api/v2/client-grants
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+  "client_id": "{{ropc_client_id}}",
+  "audience": "calculator-api",
+  "scope": [
+    "calc:double",
+    "calc:square"
+  ]
+}
 
 ###
 
