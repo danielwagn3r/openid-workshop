@@ -9,12 +9,11 @@
 
 #####
 # Configuration --> use Admin Api Client
+# see https://auth0.com/docs/api/management/v2/tokens 
 
 @tenant = apisummit.eu.auth0.com
 @admin_client_id= PkYF3L4dYwsL7v7KHSF0uO2tP1iZPw2t
 @admin_client_secret = CLYYR-lm3_XyINAmtSyD_x-LSObnL6O08lTkVLgyxFdIbOJt_bFvvZ5Ofhlac0RJ
-
-@client_id = U2avzP9EfL2ZjmpbhZlz7Md74CCpHSfJ
 
 #
 #####
@@ -39,6 +38,31 @@ Content-Type: application/json
 # Get all clients
 GET https://{{tenant}}/api/v2/clients
 Authorization: Bearer {{access_token}}
+
+###
+
+# Create resource server
+
+POST https://{{tenant}}/api/v2/resource-servers
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+    "name": "Calculator API",
+    "identifier": "calculator-api",
+    "allow_offline_access": true,
+    "skip_consent_for_verifiable_first_party_clients": true,
+    "scopes": [{
+            "value": "calc:square",
+            "description": "Calculate square"
+        },
+        {
+            "value": "calc:double",
+            "description": "Calculate double"
+        }
+    ]
+}
+
 
 ###
 
@@ -178,6 +202,37 @@ Content-Type: application/json
         "http://auth0.com/oauth/grant-type/password-realm"
     ]
 }
+
+
+###
+
+# Create  Web App
+# @name create_webapp
+POST https://{{tenant}}/api/v2/clients
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+    "is_token_endpoint_ip_header_trusted": false,
+    "name": "xxxWeb Application",
+    "is_first_party": true,
+    "oidc_conformant": true,
+    "callbacks": [
+        "http://localhost:3000/signin-auth0"
+    ],
+    "allowed_logout_urls": [
+        "http://localhost:3000/"
+    ],
+    "token_endpoint_auth_method": "client_secret_post",
+    "app_type": "regular_web",
+    "grant_types": [
+        "authorization_code",
+        "refresh_token"
+    ],
+    "custom_login_page_on": true
+}
+
+@webapp_client_id = {{create_webapp.response.body.$.client_id}}
 
 ###
 
