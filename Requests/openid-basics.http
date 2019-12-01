@@ -5,15 +5,6 @@
 ##########
 
 
-#####
-# Configuration --> use Regular Web App in Auth0
-
-@tenant = apisummit.eu.auth0.com
-
-#
-#####
-
-
 # OpenID Provider Configuration Request
 # https://openid.net/specs/openid-connect-discovery-1_0.html
 #
