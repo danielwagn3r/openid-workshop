@@ -44,7 +44,7 @@ namespace RessourceOwnerPasswordClient
             Log.CloseAndFlush();
         }
 
-        static async Task<DiscoveryResponse> GetDiscoveryResponse(string domain)
+        static async Task<DiscoveryDocumentResponse> GetDiscoveryResponse(string domain)
         {
             // discover endpoints from metadata
             var cache = new DiscoveryCache(domain);
@@ -61,7 +61,7 @@ namespace RessourceOwnerPasswordClient
             return disco;
         }
 
-        static async Task<TokenResponse> GetTokenResponse(DiscoveryResponse disco)
+        static async Task<TokenResponse> GetTokenResponse(DiscoveryDocumentResponse disco)
         {
             var client = new HttpClient();
 
@@ -97,7 +97,7 @@ namespace RessourceOwnerPasswordClient
             return response;
         }
 
-        static async Task<TokenResponse> RefreshTokenResponse(DiscoveryResponse disco, string refreshToken)
+        static async Task<TokenResponse> RefreshTokenResponse(DiscoveryDocumentResponse disco, string refreshToken)
         {
             var client = new HttpClient();
 
