@@ -93,8 +93,8 @@ namespace IdentityServer
                         options.SignOutScheme = IdentityServerConstants.SignoutScheme;
 
                         options.Authority = "https://apisummit.eu.auth0.com";
-                        options.ClientId = "PrkJ2voaUe6LZfXZY3LxhetnZL7KGKj7";
-                        options.ClientSecret = "8k7zNxE3mgdk3q5s-aZWMgB5jBz0a6dC-c7pXj3wkZ5xHx7Sal_k6v5A226aeBCG";
+                        options.ClientId = "W5G57qhnqcXfRu4i5ZXgT6NhDRFQJtz4";
+                        options.ClientSecret = "IZZSvQ9uBC9sCm-uYNWneDZMnA34kjJkNBEas9ABbXPpiiXhTA_sVwj5FdfRhSj0";
                         options.ResponseType = OidcConstants.ResponseTypes.IdToken;
 
                         options.CallbackPath = new PathString("/signin-oidc-auth0");
