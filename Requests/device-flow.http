@@ -3,6 +3,7 @@
 # Implict Flow
 #
 # https://auth0.com/learn/device-flow/#!
+# https://auth0.com/docs/flows/guides/device-auth/call-api-device-auth
 #
 ##########
 
@@ -10,9 +11,64 @@
 #####
 # See URL for demo
 
-@tenant = apisummit.eu.auth0.com
-@client_id= 
-@client_secret = 
+@client_id = 7253nmFEleoLM430TBX3bbNLxXtbU0E7
 
 #
 #####
+
+# Get Device Code
+# @name devicecode
+
+POST https://{{tenant}}/oauth/device/code
+Content-Type: application/json
+
+{
+    "client_id" : "{{client_id}}",
+    "scope" : "openid email profile calc:double",
+    "audience" : "{{audience}}"
+}
+
+@device_code = {{devicecode.response.body.$.device_code}}
+@user_code = {{devicecode.response.body.$.user_code}}
+
+###
+
+# Get Token
+# @name token
+
+
+POST https://{{tenant}}/oauth/token
+Content-Type: application/json
+
+{
+    "grant_type": "urn:ietf:params:oauth:grant-type:device_code",
+    "client_id": "{{client_id}}",
+    "device_code": "{{device_code}}"
+}
+
+@access_token = {{token.response.body.$.access_token}}
+@id_token = {{token.response.body.$.id_token}}
+
+###
+
+# Get Userinfo with identity token
+GET https://{{tenant}}/userinfo
+Authorization: Bearer {{access_token}}
+
+###
+
+# Double Calucator API
+GET http://localhost:5001/api/double/3
+Authorization: Bearer {{access_token}}
+
+###
+
+# Square Calucator API
+GET http://localhost:5001/api/square/3
+Authorization: Bearer {{access_token}}
+
+###
+
+# Tokeninfo Calucator API
+GET http://localhost:5001/api/tokeninfo
+Authorization: Bearer {{access_token}}
