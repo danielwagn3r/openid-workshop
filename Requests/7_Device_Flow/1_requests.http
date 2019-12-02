@@ -9,9 +9,9 @@
 
 
 #####
-# See URL for demo
+# Configuration --> use Native App in Auth0  and enable Device Code Grant
 
-@client_id = 7253nmFEleoLM430TBX3bbNLxXtbU0E7
+@client_id = GiFWbUIwfGiHgoKa6F9ymXauPyQUxx7s
 
 #
 #####

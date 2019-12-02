@@ -1,0 +1,54 @@
+##########
+#
+# Auth0 Management API
+#
+# https://auth0.com/docs/api/management/v2
+#
+##########
+
+
+
+
+# Get access token
+# @name token
+POST https://{{tenant}}/oauth/token
+Content-Type: application/json
+
+{
+    "client_id": "{{admin_client_id}}",
+    "client_secret": "{{admin_client_secret}}",
+    "audience": "https://{{tenant}}/api/v2/",
+    "grant_type": "client_credentials"
+}
+
+@access_token = {{token.response.body.$.access_token}}
+
+###
+
+# Get all clients
+GET https://{{tenant}}/api/v2/clients
+Authorization: Bearer {{access_token}}
+
+###
+
+# Create resource server
+
+POST https://{{tenant}}/api/v2/resource-servers
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+    "name": "Calculator API",
+    "identifier": "calculator-api",
+    "allow_offline_access": true,
+    "skip_consent_for_verifiable_first_party_clients": true,
+    "scopes": [{
+            "value": "calc:square",
+            "description": "Calculate square"
+        },
+        {
+            "value": "calc:double",
+            "description": "Calculate double"
+        }
+    ]
+}
