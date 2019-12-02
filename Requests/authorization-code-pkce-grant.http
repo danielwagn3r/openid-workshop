@@ -11,12 +11,10 @@
 # Configuration --> use Native App in Auth0
 # generate custom code_challenge and code_verifier with auth-code-pkce.js
 
-@tenant = apisummit.eu.auth0.com
 @client_id= 4lPn9lftQdlVb2u0oCNxyNu4cHVnQyBL
 @client_secret = c9UGiVFMkKor-ZA5XVjk12h5l0Qki7jjXaqg1Cze_thAq3FlDyGMBlV_eMpyuEMk
 @code_challenge = Nf0Ni5999K3WzGY30ajbTbVXXlaXWOZG3wrSBgTChGw
 @code_verifier = S2u7wOdCfiE9JXOPW0FpBGUcMVjTZ7qP6rs1TetpNcQ
-@audience = calculator-api
 
 #
 #####

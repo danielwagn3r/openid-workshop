@@ -10,17 +10,16 @@
 #####
 # Configuration --> use Regular Web App in Auth0
 
-@tenant = apisummit.eu.auth0.com
 @client_id= LhUj7wDYjXMX8Q2lRVH0VwvKap1OjHjW
 @client_secret = c9UGiVFMkKor-ZA5XVjk12h5l0Qki7jjXaqg1Cze_thAq3FlDyGMBlV_eMpyuEMk
-@audience = calculator-api
+@redirect_uri = http://localhost:3000/signin-auth0
 
 #
 #####
 
 
 # Get authorization Code
-GET https://apisummit.eu.auth0.com/authorize?audience=calculator-api&scope=openid%20email%20profile%20offline_access%20calc%3Adouble&response_type=code&client_id=LhUj7wDYjXMX8Q2lRVH0VwvKap1OjHjW&redirect_uri=http://localhost:3000/signin-auth0&state=l337&prompt=consent
+GET https://{{tenant}}/authorize?audience={{audience}}&scope=openid%20email%20profile%20offline_access%20calc%3Adouble&response_type=code&client_id={{client_id}}&redirect_uri={{redirect_uri}}&state=l337&prompt=consent
 
 @code = NZsRswRR4z_d5sWe
 
@@ -37,7 +36,7 @@ Content-Type: application/json
     "client_id": "{{client_id}}",
     "client_secret": "{{client_secret}}",
     "code": "{{code}}",
-    "redirect_uri": "http://localhost:3000/signin-auth0"
+    "redirect_uri": "{{redirect_uri}}"
 }
 
 @access_token = {{token.response.body.$.access_token}}
