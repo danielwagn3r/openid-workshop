@@ -11,8 +11,9 @@
 # Configuration --> use Native App in Auth0
 # generate custom code_challenge and code_verifier with auth-code-pkce.js
 
-@client_id= 4lPn9lftQdlVb2u0oCNxyNu4cHVnQyBL
-@client_secret = c9UGiVFMkKor-ZA5XVjk12h5l0Qki7jjXaqg1Cze_thAq3FlDyGMBlV_eMpyuEMk
+@client_id= 0OCMnyCurd03N5qjhTFP7uybQcIN3nkH
+@client_secret = lcZhNuDp2dmSFB3TdMOxNb8dvAo8XwPpuYnuQyL7v4Fjux3q2fx-EQx6hAf0_BSI
+@redirect_uri = https://localhost:5000/login
 @code_challenge = Nf0Ni5999K3WzGY30ajbTbVXXlaXWOZG3wrSBgTChGw
 @code_verifier = S2u7wOdCfiE9JXOPW0FpBGUcMVjTZ7qP6rs1TetpNcQ
 
@@ -21,14 +22,16 @@
 
 
 # Authorize 
-GET https://apisummit.eu.auth0.com/authorize?state=l337&redirect_uri=https%3A%2F%2Flocalhost%3A5000%2Flogin&code_challenge_method=S256&code_challenge=Nf0Ni5999K3WzGY30ajbTbVXXlaXWOZG3wrSBgTChGw&client_id=4lPn9lftQdlVb2u0oCNxyNu4cHVnQyBL&response_type=code&scope=openid%20email%20profile%20offline_access%20calc%3Asquare&audience=calculator-api&prompt=consent
-
-@code = K62snA0Ap7ZP8VKS
+GET https://{{tenant}}/authorize?state=l337&redirect_uri={{redirect_uri}}&code_challenge_method=S256&code_challenge={{code_challenge}}&client_id={{client_id}}&response_type=code&scope=openid%20email%20profile%20offline_access%20calc%3Asquare&audience={{audience}}&prompt=consent
 
 ###
 
 # Get access token
 # @name token
+
+@code = 8_VaIqRXp_BCnOfJ
+
+
 POST https://{{tenant}}/oauth/token
 Content-Type: application/json
 
@@ -37,7 +40,7 @@ Content-Type: application/json
     "client_id": "{{client_id}}",
     "code_verifier": "{{code_verifier}}",
     "code": "{{code}}",
-    "redirect_uri": "https://localhost:5000/login"
+    "redirect_uri": "{{redirect_uri}}"
 }
 
 @access_token = {{token.response.body.$.access_token}}
@@ -56,7 +59,7 @@ Content-Type: application/json
     "client_id": "{{client_id}}",
     "client_secret": "{{client_secret}}",
     "code": "{{code}}",
-    "redirect_uri": "https://localhost:5000/login"
+    "redirect_uri": "{{redirect_uri}}"
 }
 
 ###
