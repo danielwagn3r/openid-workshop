@@ -1,15 +1,15 @@
 {
     "rest-client.environmentVariables": {
         "$shared": {
-            "tenant": "apisummit.eu.auth0.com",
+            "tenant": "[TENANT].eu.auth0.com",
             "audience": "calculator-api",
 
             // ---
             // Configuration --> use Admin Api Client
             // see https://auth0.com/docs/api/management/v2/tokens 
             // ---
-            "admin_client_id": "PkYF3L4dYwsL7v7KHSF0uO2tP1iZPw2t",
-            "admin_client_secret": "CLYYR-lm3_XyINAmtSyD_x-LSObnL6O08lTkVLgyxFdIbOJt_bFvvZ5Ofhlac0RJ",
+            "admin_client_id": "[CLIENT ID]",
+            "admin_client_secret": "[CLIENT SECRET]",
         }
     }
 }
