@@ -28,10 +28,10 @@ Content-Type: application/json
     "audience" : "{{audience}}"
 }
 
+###
+
 @device_code = {{devicecode.response.body.$.device_code}}
 @user_code = {{devicecode.response.body.$.user_code}}
-
-###
 
 # Get Token
 # @name token
@@ -46,10 +46,10 @@ Content-Type: application/json
     "device_code": "{{device_code}}"
 }
 
+###
+
 @access_token = {{token.response.body.$.access_token}}
 @id_token = {{token.response.body.$.id_token}}
-
-###
 
 # Get Userinfo with identity token
 GET https://{{tenant}}/userinfo

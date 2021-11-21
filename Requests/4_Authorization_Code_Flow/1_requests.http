@@ -40,12 +40,11 @@ Content-Type: application/json
     "redirect_uri": "{{redirect_uri}}"
 }
 
+###
+
 @access_token = {{token.response.body.$.access_token}}
 @id_token = {{token.response.body.$.id_token}}
 @refresh_token = {{token.response.body.$.refresh_token}}
-
-
-###
 
 # Refresh token
 # @name token2
@@ -59,10 +58,10 @@ Content-Type: application/json
     "refresh_token": "{{refresh_token}}"
 }
 
+###
+
 @access_token2 = {{token2.response.body.$.access_token}}
 @id_token2 = {{token2.response.body.$.id_token}}
-
-###
 
 # Double Calucator API
 GET http://localhost:5001/api/double/3

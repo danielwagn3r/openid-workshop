@@ -36,10 +36,10 @@ Content-Type: application/json
     "audience": "{{audience}}"
 }
 
+###
+
 @access_token = {{token.response.body.$.access_token}}
 @id_token = {{token.response.body.$.id_token}}
-
-###
 
 # Get Userinfo with access token
 GET https://{{tenant}}/userinfo
@@ -62,12 +62,11 @@ Content-Type: application/json
     "audience": "{{audience}}"
 }
 
+###
+
 @access_token2 = {{token2.response.body.$.access_token}}
 @id_token2 = {{token2.response.body.$.id_token}}
 @refresh_token2 = {{token2.response.body.$.refresh_token}}
-
-
-###
 
 # Tokeninfo Calucator API
 GET http://localhost:5001/api/tokeninfo

@@ -11,9 +11,9 @@
 # @name configuration
 GET https://{{tenant}}/.well-known/openid-configuration
 
-@jwks_uri = {{configuration.response.body.$.jwks_uri}}
-
 ###
+
+@jwks_uri = {{configuration.response.body.$.jwks_uri}}
 
 # JSON Web Key Set document
 # https://tools.ietf.org/html/draft-ietf-jose-json-web-key-31

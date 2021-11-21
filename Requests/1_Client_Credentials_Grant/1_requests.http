@@ -32,9 +32,9 @@ Content-Type: application/json
     "scope" : "calc:double"
 }
 
-@access_token = {{token.response.body.$.access_token}}
-
 ###
+
+@access_token = {{token.response.body.$.access_token}}
 
 # Double Calucator API
 GET http://localhost:5001/api/double/3
@@ -67,9 +67,9 @@ Content-Type: application/json
     "scope" : "calc:double calc:square"
 }
 
-@access_token2 = {{token2.response.body.$.access_token}}
-
 ###
+
+@access_token2 = {{token2.response.body.$.access_token}}
 
 # Double Calucator API
 GET http://localhost:5001/api/double/3
