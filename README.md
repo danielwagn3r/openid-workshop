@@ -1,4 +1,4 @@
-# From Bad to Good – OpenID Connect/OAuth
+# Authentifizierung mit OpenID Connect & OAuth
 
 by [Daniel Wagner](https://github.com/danielwagn3r)
 with contributions by [Anton Kalcik](https://github.com/akalcik)
