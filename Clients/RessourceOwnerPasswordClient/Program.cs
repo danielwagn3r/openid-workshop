@@ -1,35 +1,37 @@
-﻿using System;
+﻿using IdentityModel.Client;
+using Microsoft.Extensions.Configuration;
+using Serilog;
+using Serilog.Sinks.SystemConsole.Themes;
+using System;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
-using IdentityModel;
-using IdentityModel.Client;
-using Microsoft.Extensions.Configuration;
-using Serilog;
-using Serilog.Core;
-using Serilog.Sinks.SystemConsole.Themes;
 
 namespace RessourceOwnerPasswordClient
 {
-    class Program
+    internal class Program
     {
         private static IConfiguration _configuration;
 
-        static async Task   Main(string[] args)
+        private static async Task Main(string[] args)
         {
+            var environment = Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT");
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{environment}.json", optional: true, reloadOnChange: true)
                 .AddEnvironmentVariables();
 
             _configuration = builder.Build();
 
-            Console.WriteLine(_configuration.GetConnectionString("Storage")); Log.Logger = new LoggerConfiguration()
+            Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Verbose()
-                .WriteTo.Console(theme: AnsiConsoleTheme.Code)
+                .ReadFrom.Configuration(_configuration)
                 .CreateLogger();
 
             string domain = $"https://{_configuration["Auth0:Domain"]}/";
+
+            Log.Debug("Domain: {domain}", domain);
 
             var disco = await GetDiscoveryResponse(domain);
 
@@ -44,7 +46,7 @@ namespace RessourceOwnerPasswordClient
             Log.CloseAndFlush();
         }
 
-        static async Task<DiscoveryDocumentResponse> GetDiscoveryResponse(string domain)
+        private static async Task<DiscoveryDocumentResponse> GetDiscoveryResponse(string domain)
         {
             // discover endpoints from metadata
             var cache = new DiscoveryCache(domain);
@@ -61,7 +63,7 @@ namespace RessourceOwnerPasswordClient
             return disco;
         }
 
-        static async Task<TokenResponse> GetTokenResponse(DiscoveryDocumentResponse disco)
+        private static async Task<TokenResponse> GetTokenResponse(DiscoveryDocumentResponse disco)
         {
             var client = new HttpClient();
 
@@ -97,7 +99,7 @@ namespace RessourceOwnerPasswordClient
             return response;
         }
 
-        static async Task<TokenResponse> RefreshTokenResponse(DiscoveryDocumentResponse disco, string refreshToken)
+        private static async Task<TokenResponse> RefreshTokenResponse(DiscoveryDocumentResponse disco, string refreshToken)
         {
             var client = new HttpClient();
 
@@ -125,7 +127,7 @@ namespace RessourceOwnerPasswordClient
             return response;
         }
 
-        static async Task CallApi(string token)
+        private static async Task CallApi(string token)
         {
             var client = new HttpClient()
             {
