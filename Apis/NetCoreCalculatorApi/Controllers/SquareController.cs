@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using CalculatorApi.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json.Linq;
 
 namespace CalculatorApi.Controllers
 {
@@ -27,12 +23,7 @@ namespace CalculatorApi.Controllers
         {
             _logger.LogInformation("Get double of {number}", number);
 
-            var result = new JObject
-            {
-                ["result"] = number * number
-            };
-
-            return new JsonResult(result);
+            return new JsonResult(new ResultModel { Result = number * number });
         }
     }
 }
