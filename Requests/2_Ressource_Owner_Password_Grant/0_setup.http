@@ -19,9 +19,9 @@ Content-Type: application/json
     "grant_type": "client_credentials"
 }
 
-@access_token = {{token.response.body.$.access_token}}
-
 ###
+
+@access_token = {{token.response.body.$.access_token}}
 
 # Create Ressource Owner Password App
 # @name create
@@ -43,9 +43,9 @@ Content-Type: application/json
     "is_first_party": true
 }
 
-@client_id = {{create.response.body.$.client_id}}
-
 ###
+
+@client_id = {{create.response.body.$.client_id}}
 
 # Create client grant
 

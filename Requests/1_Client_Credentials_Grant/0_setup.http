@@ -19,9 +19,9 @@ Content-Type: application/json
     "grant_type": "client_credentials"
 }
 
-@access_token = {{token.response.body.$.access_token}}
-
 ###
+
+@access_token = {{token.response.body.$.access_token}}
 
 # Get all clients
 GET https://{{tenant}}/api/v2/clients
@@ -117,9 +117,9 @@ Content-Type: application/json
   "is_first_party": true
 }
 
-@client_id_advanced = {{create_advanced.response.body.$.client_id}}
-
 ###
+
+@client_id_advanced = {{create_advanced.response.body.$.client_id}}
 
 # Create client grant
 

@@ -21,9 +21,9 @@ Content-Type: application/json
     "grant_type": "client_credentials"
 }
 
-@access_token = {{token.response.body.$.access_token}}
-
 ###
+
+@access_token = {{token.response.body.$.access_token}}
 
 # Create  Implicit Web Application
 # @name create
@@ -52,9 +52,9 @@ Content-Type: application/json
     ]
 }
 
-@client_id = {{create.response.body.$.client_id}}
-
 ###
+
+@client_id = {{create.response.body.$.client_id}}
 
 GET https://{{tenant}}/api/v2/clients/{{client_id}}
 Authorization: Bearer {{access_token}}
