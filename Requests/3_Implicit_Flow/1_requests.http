@@ -2,7 +2,7 @@
 #
 # Implict Grant
 #
-# https://auth0.com/docs/api-auth/tutorials/implicit-grant
+# https://auth0.com/docs/authorization/flows/implicit-flow-with-form-post
 #
 ##########
 
@@ -12,13 +12,14 @@
 
 @client_id= OvyhJsTW2V7m7nN1Y2rBWtwPhSrcgWlZ
 @redirect_uri = http://localhost:3000/signin-auth0
+@scope = openid email profile calc:square
 
 #
 #####
 
 
 # Get identity and access token
-GET https://{{tenant}}/authorize?scope=openid%20email%20profile%20calc%3Asquare&audience={{audience}}&response_type=id_token%20token&client_id={{client_id}}&redirect_uri={{redirect_uri}}&nonce=12345789&prompt=consent
+GET https://{{tenant}}/authorize?scope={{scope}}&audience={{audience}}&response_type=id_token%20token&client_id={{client_id}}&redirect_uri={{redirect_uri}}&nonce=12345789&prompt=consent
 
 ###
 

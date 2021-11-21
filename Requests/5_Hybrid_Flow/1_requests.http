@@ -13,19 +13,20 @@
 @client_id= 3nHVlDdEWW6m6UtowY3zYjfb80qVVf0P
 @client_secret = bNi2i3TjI-hop-DxJYMkzRXtezHN616EUIzCo1hENp01qKtD46ts9-oPfFUsgaK0
 @redirect_uri = http://localhost:3000/signin-auth0
+@scope = openid email profile offline_access calc:square
 
 #
 #####
 
 
 # Get identity and access token
-GET https://{{tenant}}/authorize?scope=openid%20email%20profile%20calc%3Asquare%20offline_access&audience={{audience}}&response_type=code%20id_token%20token&client_id={{client_id}}&redirect_uri={{redirect_uri}}&nonce=12345789&prompt=consent
+GET https://{{tenant}}/authorize?scope={{scope}}&audience={{audience}}&response_type=code%20id_token%20token&client_id={{client_id}}&redirect_uri={{redirect_uri}}&nonce=12345789&prompt=consent
 
 ###
 
 @access_token = eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1FRkdRamN4UkVKRk9FRXdRMFUwTmpjME56bENNa016UmpFMFFUVTNNME16UlVSQk9ERXhNZyJ9.eyJpc3MiOiJodHRwczovL2FwaXN1bW1pdC5ldS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWJmMTMwZGM1YTAwYWYyMjE5ZGM5ZTUzIiwiYXVkIjpbImNhbGN1bGF0b3ItYXBpIiwiaHR0cHM6Ly9hcGlzdW1taXQuZXUuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU3NTMyMzUwNSwiZXhwIjoxNTc1MzMwNzA1LCJhenAiOiIzbkhWbERkRVdXNm02VXRvd1kzellqZmI4MHFWVmYwUCIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwgY2FsYzpzcXVhcmUgb2ZmbGluZV9hY2Nlc3MifQ.DRP1_o3L6pkFnZG5Vs7QVxWZd6f9HDTEvOlTCY1hQxO2-GSdafwGpntmWQ7EYB2fsQDgFbxETLfXB7GRT-dG3WQz10pO85apMBHKZA4pJ_48_Z-yE01_ZKWglWAuMaSD_P6RFJeuKRhtB7TCre8IMwRxpYC_y3nIy2X20fyYWSnz7GLGJVzWy7yFt6fF9onmADumAW5Yu-PRZ1SeoGPf3J2oU6YYxygKNyMwfWS9IFSNplLIpR57fwy719HUmaa4uQyWwedyfHZD2FJC7DtkzORAROmzfGRLxqF6N-9LiC2Zmi8lAPnoP5OH1cg_MzERFToxzzdFlpmKccVzsy9Gdw
 @id_token = eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1FRkdRamN4UkVKRk9FRXdRMFUwTmpjME56bENNa016UmpFMFFUVTNNME16UlVSQk9ERXhNZyJ9.eyJuaWNrbmFtZSI6ImpvaG5kb2UiLCJuYW1lIjoiam9obmRvZUBhY21lLmluYyIsInBpY3R1cmUiOiJodHRwczovL3MuZ3JhdmF0YXIuY29tL2F2YXRhci9mYzAzZjhkODZiODdmODA0NDNkMjIzNGQxYjVhYWZlZD9zPTQ4MCZyPXBnJmQ9aHR0cHMlM0ElMkYlMkZjZG4uYXV0aDAuY29tJTJGYXZhdGFycyUyRmpvLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDE5LTEyLTAyVDIxOjUxOjQzLjI3OFoiLCJlbWFpbCI6ImpvaG5kb2VAYWNtZS5pbmMiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImlzcyI6Imh0dHBzOi8vYXBpc3VtbWl0LmV1LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1YmYxMzBkYzVhMDBhZjIyMTlkYzllNTMiLCJhdWQiOiIzbkhWbERkRVdXNm02VXRvd1kzellqZmI4MHFWVmYwUCIsImlhdCI6MTU3NTMyMzUwNSwiZXhwIjoxNTc1MzU5NTA1LCJhdF9oYXNoIjoieTZIXzlPcjNvUS14TzVINGR5eDBOdyIsImNfaGFzaCI6Im9EMm8zaGQzVk5XUDRtQ3QtTE50ZHciLCJub25jZSI6IjEyMzQ1Nzg5In0.jsOkAogc51tJgq2FZ1T4VdATFaszrSY3PKX4XHUEZPPqUmP_cemeWt6dbWsZSIyoU7TcRzIa9gIvIF2wkP2RfWYG90mZyVMV72Hz-1ggQ4UBbWTyUFty0L9U-L7vDsQ350a0fW5by5PYQf4gh-hnPnhOe8h5KjYt3GIv_mJf4SwSftMGKDMWch2AAxS6PvLdUNzQDVhtd1rDx06okusFNRGFcO3pMd5HRiQUJicno0G7uTlMT9WhS3AT__KD70EA_7EQMz_ESXbRaYeuaMwsLCePKoTmj3shkh2SeTJ2Kiu4QqvSz7Zr-P90Fr27wz_VKn0YwaEBBoNc3OqhDGipCw
-@code = ZBPfaPcpfgfazaF4
+@code = 4Yha24rEGvKwLzSo
 
 ###
 
@@ -42,12 +43,11 @@ Content-Type: application/json
     "redirect_uri": "{{redirect_uri}}"
 }
 
+###
+
 @access_token2 = {{token.response.body.$.access_token}}
 @id_token2 = {{token.response.body.$.id_token}}
 @refresh_token2 = {{token.response.body.$.refresh_token}}
-
-
-###
 
 # Tokeninfo Calucator API
 GET http://localhost:5001/api/tokeninfo

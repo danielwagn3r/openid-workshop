@@ -2,7 +2,8 @@
 #
 # Client Credentials Grant
 #
-# https://auth0.com/docs/api-auth/tutorials/client-credentials
+# https://auth0.com/docs/authorization/flows/client-credentials-flow
+# https://auth0.com/docs/authorization/flows/call-your-api-using-the-client-credentials-flow
 #
 ##########
 

@@ -2,6 +2,7 @@
 #
 # Authorization Code Grant
 #
+# https://auth0.com/docs/authorization/flows/authorization-code-flow
 # https://auth0.com/docs/api-auth/tutorials/authorization-code-grant
 #
 ##########
@@ -13,18 +14,19 @@
 @client_id= 4ukp032ZN0QLrXg0KpgqC2gWqItKdS5q
 @client_secret = znIuk-qklH7oX-Dvs6Oec-mWHniXqqBvv6xNhGTvV2nIAsXvyQxRxuEUn-N44BKC
 @redirect_uri = http://localhost:3000/signin-auth0
+@scope = openid email profile offline_access calc:double
 
 #
 #####
 
 
 # Get authorization Code
-GET https://{{tenant}}/authorize?audience={{audience}}&scope=openid%20email%20profile%20offline_access%20calc%3Adouble&response_type=code&client_id={{client_id}}&redirect_uri={{redirect_uri}}&state=l337&prompt=consent
+GET https://{{tenant}}/authorize?audience={{audience}}&scope={{scope}}&response_type=code&client_id={{client_id}}&redirect_uri={{redirect_uri}}&state=l337&prompt=consent
 
 ###
 
 
-# Get access token
+# Get access and refresh token
 # @name token
 
 @code = K8ryHbFs1jULwAFz

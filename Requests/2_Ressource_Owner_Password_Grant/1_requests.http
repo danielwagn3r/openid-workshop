@@ -2,7 +2,8 @@
 #
 # Ressource Owner Password Grant
 #
-# https://auth0.com/docs/api-auth/tutorials/password-grant
+# https://auth0.com/docs/authorization/flows/resource-owner-password-flow
+# https://auth0.com/docs/authorization/flows/call-your-api-using-resource-owner-password-flow
 #
 ##########
 

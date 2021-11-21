@@ -2,8 +2,8 @@
 #
 # Implict Flow
 #
-# https://auth0.com/learn/device-flow/#!
-# https://auth0.com/docs/flows/guides/device-auth/call-api-device-auth
+# https://auth0.com/device-flow/#!
+# https://auth0.com/docs/authorization/flows/call-your-api-using-the-device-authorization-flow
 #
 ##########
 
