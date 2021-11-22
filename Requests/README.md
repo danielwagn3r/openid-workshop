@@ -8,5 +8,5 @@
 
 ## Usage
 
-- Customize configuration settings in [.vscode\settings.json](.vscode\settings.json)
-- Start one of the Demo APIs in [Apis](..\Apis)
+- Customize configuration settings in [.vscode\settings.json](.vscode/settings.json)
+- Start one of the Demo APIs in [Apis](/Apis)
