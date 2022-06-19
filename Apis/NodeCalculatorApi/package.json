@@ -13,9 +13,9 @@
     "express": "^4.17.3",
     "express-jwt": "^6.1.1",
     "express-jwt-authz": "^2.4.1",
-    "express-validator": "^6.14.0",
+    "express-validator": "^6.14.2",
     "jsonwebtoken": "^8.5.1",
-    "jwks-rsa": "^2.0.5",
+    "jwks-rsa": "^2.1.4",
     "winston": "^3.7.2"
   }
 }
