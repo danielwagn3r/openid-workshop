@@ -3,6 +3,7 @@
         "$shared": {
             "tenant": "[TENANT].eu.auth0.com",
             "audience": "calculator-api",
+            "audience": "http://calculator-api",
 
             // ---
             // Configuration --> use Admin Api Client
