@@ -36,7 +36,7 @@ const checkJwt = jwt({
     jwksUri: `https://apisummit.eu.auth0.com/.well-known/jwks.json`
   }),
 
-  audience: 'calculator-api',
+  audience: 'http://calculator-api',
   issuer: `https://apisummit.eu.auth0.com/`,
   algorithms: ['RS256']
 });
