@@ -1,3 +1,6 @@
 [submodule "Clients/openid-refreshtoken-sample"]
 	path = Clients/openid-refreshtoken-sample
 	url = https://github.com/danielwagn3r/openid-refreshtoken-sample.git
+[submodule "Clients/oauth2-passwordgrant-sample"]
+	path = Clients/oauth2-passwordgrant-sample
+	url = https://github.com/danielwagn3r/oauth2-passwordgrant-sample.git
