@@ -1,0 +1,3 @@
+[submodule "Clients/openid-refreshtoken-sample"]
+	path = Clients/openid-refreshtoken-sample
+	url = https://github.com/danielwagn3r/openid-refreshtoken-sample.git
