@@ -4,3 +4,6 @@
 [submodule "Clients/oauth2-passwordgrant-sample"]
 	path = Clients/oauth2-passwordgrant-sample
 	url = https://github.com/danielwagn3r/oauth2-passwordgrant-sample.git
+[submodule "Apis/openid-calculator-api-node"]
+	path = Apis/openid-calculator-api-node
+	url = https://github.com/danielwagn3r/openid-calculator-api-node.git
