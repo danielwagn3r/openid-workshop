@@ -10,3 +10,6 @@
 [submodule "Apis/openid-calculator-api-dotnet"]
 	path = Apis/openid-calculator-api-dotnet
 	url = https://github.com/danielwagn3r/openid-calculator-api-dotnet.git
+[submodule "Requests/helpers/auth-code-pkce"]
+	path = Requests/helpers/auth-code-pkce
+	url = https://github.com/danielwagn3r/auth-code-pkce.git
