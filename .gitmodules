@@ -13,3 +13,6 @@
 [submodule "Requests/helpers/auth-code-pkce"]
 	path = Requests/helpers/auth-code-pkce
 	url = https://github.com/danielwagn3r/auth-code-pkce.git
+[submodule "Requests/helpers/dummy-webserver-node"]
+	path = Requests/helpers/dummy-webserver-node
+	url = https://github.com/danielwagn3r/dummy-webserver-node.git
