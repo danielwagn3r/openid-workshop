@@ -19,3 +19,12 @@
 [submodule "Apis/openid-calculator-api-tsc"]
 	path = Apis/openid-calculator-api-tsc
 	url = https://github.com/danielwagn3r/openid-calculator-api-tsc.git
+[submodule "AuthServices/keycloak-sample"]
+	path = AuthServices/keycloak-sample
+	url = https://github.com/danielwagn3r/keycloak-sample.git
+[submodule "AuthServices/identityserver4-sample"]
+	path = AuthServices/identityserver4-sample
+	url = https://github.com/danielwagn3r/identityserver4-sample.git
+[submodule "AuthServices/duende-identityserver-sample"]
+	path = AuthServices/duende-identityserver-sample
+	url = https://github.com/danielwagn3r/duende-identityserver-sample.git
