@@ -39,7 +39,7 @@ Content-Type: application/json
 
 {
     "name": "Calculator APII",
-    "identifier": "calculator-apii",
+    "identifier": "calculator-api",
     "allow_offline_access": true,
     "skip_consent_for_verifiable_first_party_clients": true,
     "scopes": [{

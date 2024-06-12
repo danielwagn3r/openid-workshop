@@ -25,17 +25,15 @@
 # Get Access Token for Ressource Owner App
 # @name token
 POST https://{{tenant}}/oauth/token
-Content-Type: application/json
+Content-Type: application/x-www-form-urlencoded
 
-{
-    "grant_type": "password",
-    "client_id": "{{client_id}}",
-    "client_secret": "{{client_secret}}",
-    "username": "{{username}}",
-    "password": "{{password}}",
-    "scope": "openid email profile",
-    "audience": "{{audience}}"
-}
+grant_type=password
+&client_id={{client_id}}
+&client_secret={{client_secret}}
+&username={{username}}
+&password={{password}}
+&scope=openid email profile
+&audience={{audience}}
 
 ###
 
@@ -51,17 +49,16 @@ Authorization: Bearer {{access_token}}
 # Get Access Token for Ressource Owner App
 # @name token2
 POST https://{{tenant}}/oauth/token
-Content-Type: application/json
+Content-Type: application/x-www-form-urlencoded
 
-{
-    "grant_type": "password",
-    "client_id": "{{client_id}}",
-    "client_secret": "{{client_secret}}",
-    "username": "{{username}}",
-    "password": "{{password}}",
-    "scope": "openid email profile offline_access",
-    "audience": "{{audience}}"
-}
+grant_type=password
+&client_id={{client_id}}
+&client_secret={{client_secret}}
+&username={{username}}
+&password={{password}}
+&scope=openid email profile offline_access
+&audience={{audience}}
+
 
 ###
 
@@ -70,35 +67,33 @@ Content-Type: application/json
 @refresh_token2 = {{token2.response.body.$.refresh_token}}
 
 # Tokeninfo Calucator API
-GET http://localhost:5001/api/tokeninfo
+GET {{api}}/identity
 Authorization: Bearer {{access_token}}
 
 ###
 
 # Tokeninfo Calucator API
-GET http://localhost:5001/api/tokeninfo
+GET {{api}}/identity
 Authorization: Bearer {{access_token2}}
 
 ###
 
 # Double Calucator API
-GET http://localhost:5001/api/double/3
+GET {{api}}/double/3
 Authorization: Bearer {{access_token}}
 
 ###
 
 # Square Calucator API
-GET http://localhost:5001/api/square/3
+GET {{api}}/square/3
 Authorization: Bearer {{access_token2}}
 
 ###
 # Refresh Token for Ressource Owner App
 POST https://{{tenant}}/oauth/token
-Content-Type: application/json
+Content-Type: application/x-www-form-urlencoded
 
-{
-    "grant_type": "refresh_token",
-    "client_id": "{{client_id}}",
-    "client_secret": "{{client_secret}}",
-    "refresh_token": "{{refresh_token2}}"
-}
+grant_type=refresh_token
+&client_id={{client_id}}
+&client_secret={{client_secret}}
+&refresh_token={{refresh_token2}}

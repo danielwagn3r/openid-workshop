@@ -23,34 +23,32 @@
 # Get Access Token for Client (double-only)
 # @name token 
 POST https://{{tenant}}/oauth/token
-Content-Type: application/json
+Content-Type: application/x-www-form-urlencoded
 
-{
-    "grant_type": "client_credentials",
-    "client_id": "{{client_id}}",
-    "client_secret": "{{client_secret}}",
-    "audience": "{{audience}}",
-    "scope" : "calc:double"
-}
+grant_type=client_credentials
+&client_id={{client_id}}
+&client_secret={{client_secret}}
+&audience={{audience}}
+&scope=calc:double
 
 ###
 
 @access_token = {{token.response.body.$.access_token}}
 
 # Double Calucator API
-GET http://localhost:5001/api/double/3
+GET {{api}}/double/3
 Authorization: Bearer {{access_token}}
 
 ###
 
 # Square Calucator API
-GET http://localhost:5001/api/square/3
+GET {{api}}/square/3
 Authorization: Bearer {{access_token}}
 
 ###
 
 # Tokeninfo Calucator API
-GET http://localhost:5001/api/tokeninfo
+GET {{api}}/identity
 Authorization: Bearer {{access_token}}
 
 ###
@@ -58,33 +56,31 @@ Authorization: Bearer {{access_token}}
 # Get Access Token for Client (double and square)
 # @name token2
 POST https://{{tenant}}/oauth/token
-Content-Type: application/json
+Content-Type: application/x-www-form-urlencoded
 
-{
-    "grant_type": "client_credentials",
-    "client_id": "{{client_id2}}",
-    "client_secret": "{{client_secret2}}",
-    "audience": "calculator-api",
-    "scope" : "calc:double calc:square"
-}
+grant_type=client_credentials
+&client_id={{client_id2}}
+&client_secret={{client_secret2}}
+&audience={{audience}}
+&scope=calc:double calc:square
 
 ###
 
 @access_token2 = {{token2.response.body.$.access_token}}
 
 # Double Calucator API
-GET http://localhost:5001/api/double/3
+GET {{api}}/double/3
 Authorization: Bearer {{access_token2}}
 
 
 ###
 
 # Square Calucator API
-GET http://localhost:5001/api/square/3
+GET {{api}}/square/3
 Authorization: Bearer {{access_token2}}
 
 ###
 
 # Tokeninfo Calucator API
-GET http://localhost:5001/api/tokeninfo
+GET {{api}}/identity
 Authorization: Bearer {{access_token2}}

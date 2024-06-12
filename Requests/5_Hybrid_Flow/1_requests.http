@@ -10,8 +10,8 @@
 #####
 # Configuration --> use Regular Web App in Auth0
 
-@client_id= 3nHVlDdEWW6m6UtowY3zYjfb80qVVf0P
-@client_secret = bNi2i3TjI-hop-DxJYMkzRXtezHN616EUIzCo1hENp01qKtD46ts9-oPfFUsgaK0
+@client_id= Ga6mz9inKFUgq43VPfCSNmasv95NyLNY
+@client_secret = SqNb8B4_27iFxQ8gf6gs7CWsx9eBWYz6ANQfgfm60YuYeM-DZ4VQvBs46VHGpUVh
 @redirect_uri = http://localhost:3000/signin-auth0
 @scope = openid email profile offline_access calc:square
 
@@ -24,24 +24,23 @@ GET https://{{tenant}}/authorize?scope={{scope}}&audience={{audience}}&response_
 
 ###
 
-@access_token = eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1FRkdRamN4UkVKRk9FRXdRMFUwTmpjME56bENNa016UmpFMFFUVTNNME16UlVSQk9ERXhNZyJ9.eyJpc3MiOiJodHRwczovL2FwaXN1bW1pdC5ldS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWJmMTMwZGM1YTAwYWYyMjE5ZGM5ZTUzIiwiYXVkIjpbImNhbGN1bGF0b3ItYXBpIiwiaHR0cHM6Ly9hcGlzdW1taXQuZXUuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU3NTMyMzUwNSwiZXhwIjoxNTc1MzMwNzA1LCJhenAiOiIzbkhWbERkRVdXNm02VXRvd1kzellqZmI4MHFWVmYwUCIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwgY2FsYzpzcXVhcmUgb2ZmbGluZV9hY2Nlc3MifQ.DRP1_o3L6pkFnZG5Vs7QVxWZd6f9HDTEvOlTCY1hQxO2-GSdafwGpntmWQ7EYB2fsQDgFbxETLfXB7GRT-dG3WQz10pO85apMBHKZA4pJ_48_Z-yE01_ZKWglWAuMaSD_P6RFJeuKRhtB7TCre8IMwRxpYC_y3nIy2X20fyYWSnz7GLGJVzWy7yFt6fF9onmADumAW5Yu-PRZ1SeoGPf3J2oU6YYxygKNyMwfWS9IFSNplLIpR57fwy719HUmaa4uQyWwedyfHZD2FJC7DtkzORAROmzfGRLxqF6N-9LiC2Zmi8lAPnoP5OH1cg_MzERFToxzzdFlpmKccVzsy9Gdw
-@id_token = eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1FRkdRamN4UkVKRk9FRXdRMFUwTmpjME56bENNa016UmpFMFFUVTNNME16UlVSQk9ERXhNZyJ9.eyJuaWNrbmFtZSI6ImpvaG5kb2UiLCJuYW1lIjoiam9obmRvZUBhY21lLmluYyIsInBpY3R1cmUiOiJodHRwczovL3MuZ3JhdmF0YXIuY29tL2F2YXRhci9mYzAzZjhkODZiODdmODA0NDNkMjIzNGQxYjVhYWZlZD9zPTQ4MCZyPXBnJmQ9aHR0cHMlM0ElMkYlMkZjZG4uYXV0aDAuY29tJTJGYXZhdGFycyUyRmpvLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDE5LTEyLTAyVDIxOjUxOjQzLjI3OFoiLCJlbWFpbCI6ImpvaG5kb2VAYWNtZS5pbmMiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImlzcyI6Imh0dHBzOi8vYXBpc3VtbWl0LmV1LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1YmYxMzBkYzVhMDBhZjIyMTlkYzllNTMiLCJhdWQiOiIzbkhWbERkRVdXNm02VXRvd1kzellqZmI4MHFWVmYwUCIsImlhdCI6MTU3NTMyMzUwNSwiZXhwIjoxNTc1MzU5NTA1LCJhdF9oYXNoIjoieTZIXzlPcjNvUS14TzVINGR5eDBOdyIsImNfaGFzaCI6Im9EMm8zaGQzVk5XUDRtQ3QtTE50ZHciLCJub25jZSI6IjEyMzQ1Nzg5In0.jsOkAogc51tJgq2FZ1T4VdATFaszrSY3PKX4XHUEZPPqUmP_cemeWt6dbWsZSIyoU7TcRzIa9gIvIF2wkP2RfWYG90mZyVMV72Hz-1ggQ4UBbWTyUFty0L9U-L7vDsQ350a0fW5by5PYQf4gh-hnPnhOe8h5KjYt3GIv_mJf4SwSftMGKDMWch2AAxS6PvLdUNzQDVhtd1rDx06okusFNRGFcO3pMd5HRiQUJicno0G7uTlMT9WhS3AT__KD70EA_7EQMz_ESXbRaYeuaMwsLCePKoTmj3shkh2SeTJ2Kiu4QqvSz7Zr-P90Fr27wz_VKn0YwaEBBoNc3OqhDGipCw
-@code = 4Yha24rEGvKwLzSo
+@access_token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik1FRkdRamN4UkVKRk9FRXdRMFUwTmpjME56bENNa016UmpFMFFUVTNNME16UlVSQk9ERXhNZyJ9.eyJpc3MiOiJodHRwczovL2FwaXN1bW1pdC5ldS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWJmMTMwZGM1YTAwYWYyMjE5ZGM5ZTUzIiwiYXVkIjpbImh0dHA6Ly9jYWxjdWxhdG9yLWFwaSIsImh0dHBzOi8vYXBpc3VtbWl0LmV1LmF1dGgwLmNvbS91c2VyaW5mbyJdLCJpYXQiOjE3MTc5NjY2NDIsImV4cCI6MTcxNzk3Mzg0Miwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCBjYWxjOnNxdWFyZSBvZmZsaW5lX2FjY2VzcyIsImF6cCI6IkdhNm16OWluS0ZVZ3E0M1ZQZkNTTm1hc3Y5NU55TE5ZIn0.Z--gxvg9T1wyryUbLdQA2oAwyfAFDkRZrel5D4auf0J_kZ8lpo6VAg4kLX_XUjgI2ufUl4-zanLY8FUBrzVQTCl-sAo7KnGXlNtI_ecsg81wmCtcmjO1NYJSUNSSBmGNj2BheOgwxwqMWGYT-xCRCa-iFq2CPJ-GcdLbNRppk5Hdj3MSepy2KtfNOBoC9lGFHGYOeS6m16DcgXAxySbtqbcRI4kXR2ubRpGdUvIhYI_lc_myTE_3-kZrTRWxOJQaLjgEoGXYVhhUugYpG64z2qjxxdTeegiaAlhUPKmmWdbPW9iK4BrY5tM8EZbbk3nMk61QR36fXKUk_khQLlD-6w
+@id_token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik1FRkdRamN4UkVKRk9FRXdRMFUwTmpjME56bENNa016UmpFMFFUVTNNME16UlVSQk9ERXhNZyJ9.eyJuaWNrbmFtZSI6ImpvaG5kb2UiLCJuYW1lIjoiam9obmRvZUBhY21lLmluYyIsInBpY3R1cmUiOiJodHRwczovL3MuZ3JhdmF0YXIuY29tL2F2YXRhci9mYzAzZjhkODZiODdmODA0NDNkMjIzNGQxYjVhYWZlZD9zPTQ4MCZyPXBnJmQ9aHR0cHMlM0ElMkYlMkZjZG4uYXV0aDAuY29tJTJGYXZhdGFycyUyRmpvLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDI0LTA2LTA5VDIwOjQzOjE0LjEzMFoiLCJlbWFpbCI6ImpvaG5kb2VAYWNtZS5pbmMiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImlzcyI6Imh0dHBzOi8vYXBpc3VtbWl0LmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJHYTZtejlpbktGVWdxNDNWUGZDU05tYXN2OTVOeUxOWSIsImlhdCI6MTcxNzk2NjY0MiwiZXhwIjoxNzE4MDAyNjQyLCJzdWIiOiJhdXRoMHw1YmYxMzBkYzVhMDBhZjIyMTlkYzllNTMiLCJhdF9oYXNoIjoiUC0zMWd5a0lmbVBOakZ3VDI2YjVlUSIsImNfaGFzaCI6IlBkQWNncFVTWjNYc2ZfODYtVjBaaFEiLCJzaWQiOiJBUVY4YUZvTmEzd1hLMHFtT1dBRDN2ZTYyd19FLWd6UiIsIm5vbmNlIjoiMTIzNDU3ODkifQ.zBuW8vHxOCyIyKHWGch_ISmoX7DPWdJ_Hh58vehZlKykVc6kjj9HGoxL8RN-LVmkURTtPdWRzAeuMuclcsrhWXXJrLpkgNFmu9f0dTrWYGTtYku_0EUWCEwn45myyFveH_DbqQbbiEHrcwBWodG872cS24Ha8lBxGhGG5gZVU915R7JKfNT4x25QyYds6HqPxyH4itgQkTL6nBblekYKCnEtpBXzpRFAtu1ziyt2L0lbD5NbcB0BM4os0rsF8Nx4bhc5JetblnAJ3dCZ9pdh9nmptDyYgWExY1Vso-0g4ak-OsPRuzj_AZMtIzQdYBwiAOo6Idxp9NPXmZQcQNCyLQ
+@code = BkHDTrQ6isw-rT5TNBcT0wszHkXaAxn11PxRWRdnPAj83
 
 ###
 
 # Get access token
 # @name token
 POST https://{{tenant}}/oauth/token
-Content-Type: application/json
+Content-Type: application/x-www-form-urlencoded
 
-{
-    "grant_type":"authorization_code",
-    "client_id": "{{client_id}}",
-    "client_secret": "{{client_secret}}",
-    "code": "{{code}}",
-    "redirect_uri": "{{redirect_uri}}"
-}
+grant_type=authorization_code
+&client_id={{client_id}}
+&client_secret={{client_secret}}
+&code={{code}}
+&redirect_uri={{redirect_uri}}
+
 
 ###
 
@@ -50,7 +49,7 @@ Content-Type: application/json
 @refresh_token2 = {{token.response.body.$.refresh_token}}
 
 # Tokeninfo Calucator API
-GET http://localhost:5001/api/tokeninfo
+GET {{api}}/identity
 Authorization: Bearer {{access_token}}
 
 ###
@@ -68,19 +67,19 @@ Authorization: Bearer {{access_token2}}
 ###
 
 # Tokeninfo Calucator API
-GET http://localhost:5001/api/tokeninfo
+GET {{api}}/identity
 Authorization: Bearer {{access_token2}}
 
 ###
 
 # Double Calucator API
-GET http://localhost:5001/api/double/3
+GET {{api}}/double/3
 Authorization: Bearer {{access_token}}
 
 ###
 
 # Square Calucator API
-GET http://localhost:5001/api/square/3
+GET {{api}}/square/3
 Authorization: Bearer {{access_token}}
 
 ###
@@ -88,11 +87,9 @@ Authorization: Bearer {{access_token}}
 # Refresh token
 # @name token2
 POST https://{{tenant}}/oauth/token
-Content-Type: application/json
+Content-Type: application/x-www-form-urlencoded
 
-{
-    "grant_type": "refresh_token",
-    "client_id": "{{client_id}}",
-    "client_secret": "{{client_secret}}",
-    "refresh_token": "{{refresh_token2}}"
-}
+grant_type=refresh_token
+&client_id={{client_id}}
+&client_secret={{client_secret}}
+&refresh_token={{refresh_token2}}

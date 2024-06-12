@@ -11,7 +11,8 @@
 #####
 # Configuration --> use Native App in Auth0  and enable Device Code Grant
 
-@client_id = GiFWbUIwfGiHgoKa6F9ymXauPyQUxx7s
+@client_id = oEQe87AESxcAWqFD5xmTnAnOT5nBuCaT
+@client_secret = pcKGiR8Er0kcKcwNKvb5wtEBSd9jLFQ8h3mhKwGe5ZAJv09jf6dqedAOR-OOCxx5
 
 #
 #####
@@ -20,13 +21,12 @@
 # @name devicecode
 
 POST https://{{tenant}}/oauth/device/code
-Content-Type: application/json
+Content-Type: application/x-www-form-urlencoded
 
-{
-    "client_id" : "{{client_id}}",
-    "scope" : "openid email profile calc:double",
-    "audience" : "{{audience}}"
-}
+client_id={{client_id}}
+&scope=openid email profile offline_access calc:double
+&audience={{audience}}
+
 
 ###
 
@@ -38,13 +38,12 @@ Content-Type: application/json
 
 
 POST https://{{tenant}}/oauth/token
-Content-Type: application/json
+Content-Type: application/x-www-form-urlencoded
 
-{
-    "grant_type": "urn:ietf:params:oauth:grant-type:device_code",
-    "client_id": "{{client_id}}",
-    "device_code": "{{device_code}}"
-}
+grant_type=urn:ietf:params:oauth:grant-type:device_code
+&client_id={{client_id}}
+&client_secret={{client_secret}}
+&device_code={{device_code}}
 
 ###
 
@@ -52,23 +51,23 @@ Content-Type: application/json
 @id_token = {{token.response.body.$.id_token}}
 
 # Get Userinfo with identity token
-GET https://{{tenant}}/userinfo
+GET https://{{tenant}}/oauth/userinfo
 Authorization: Bearer {{access_token}}
 
 ###
 
 # Double Calucator API
-GET http://localhost:5001/api/double/3
+GET {{api}}/double/3
 Authorization: Bearer {{access_token}}
 
 ###
 
 # Square Calucator API
-GET http://localhost:5001/api/square/3
+GET {{api}}/square/3
 Authorization: Bearer {{access_token}}
 
 ###
 
 # Tokeninfo Calucator API
-GET http://localhost:5001/api/tokeninfo
+GET {{api}}/identity
 Authorization: Bearer {{access_token}}

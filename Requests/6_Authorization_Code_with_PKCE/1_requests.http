@@ -14,8 +14,8 @@
 @client_id= 4lPn9lftQdlVb2u0oCNxyNu4cHVnQyBL
 @client_secret = QVJ7H0alZ-xv1IFLe_xpdCAZ1vrh9oqmTcjVz_JMnFEPo_OK9ElBbGjKqRrR9gZy
 @redirect_uri = http://localhost:3000/signin-auth0
-@code_challenge = Ak8HGclYrbeVGALvUUZpzAw2Ya0ETlkZs5nQ8OJ6h1o
-@code_verifier = WS9r_diuaKFufd3Nlx5dDvfwQNAekji3QSEWlQWChqQ
+@code_challenge = JiCfjR0ceTNiBRcxghqjnWxBwRl9o2B7ogdxpGl2tDw
+@code_verifier = aj1cBUxqDQvrueJKvr-taJkWPpmuodt-kqX5Z4KukSM
 @scope = openid email profile offline_access calc:square
 #
 #####
@@ -29,33 +29,31 @@ GET https://{{tenant}}/authorize?state=l337&redirect_uri={{redirect_uri}}&code_c
 # Get access and refresh token
 # @name token
 
-@code = WePqMbuYpWM8k9oIYhTUI9epgkTjdH9JCrD8mtz7WjOpY
+@code = 6CKb3iD_Rs8xc2AVFgS-eFeTGeyKl9rkKaKVV-IZwFJyF
 
 
 POST https://{{tenant}}/oauth/token
-Content-Type: application/json
+Content-Type: application/x-www-form-urlencoded
 
-{
-    "grant_type":"authorization_code",
-    "client_id": "{{client_id}}",
-    "code_verifier": "{{code_verifier}}",
-    "code": "{{code}}",
-    "redirect_uri": "{{redirect_uri}}"
-}
+grant_type=authorization_code
+&client_id={{client_id}}
+&code_verifier={{code_verifier}}
+&code={{code}}
+&redirect_uri={{redirect_uri}}
+
 
 ###
 
 # Get access token (invalid authorization code)
 POST https://{{tenant}}/oauth/token
-Content-Type: application/json
+Content-Type: application/x-www-form-urlencoded
 
-{
-    "grant_type":"authorization_code",
-    "client_id": "{{client_id}}",
-    "client_secret": "{{client_secret}}",
-    "code": "{{code}}",
-    "redirect_uri": "{{redirect_uri}}"
-}
+grant_type=authorization_code
+&client_id={{client_id}}
+&client_secret={{client_secret}}
+&code={{code}}
+&redirect_uri={{redirect_uri}}
+
 
 ###
 
@@ -67,75 +65,51 @@ Content-Type: application/json
 # @name tokens
 
 POST https://{{tenant}}/oauth/token
-Content-Type: application/json
+Content-Type: application/x-www-form-urlencoded
 
-{
-    "grant_type": "refresh_token",
-    "client_id": "{{client_id}}",
-    "code_verifier": "{{code_verifier}}",
-    "refresh_token": "{{refresh_token}}"
-}
+grant_type=refresh_token
+&client_id={{client_id}}
+&code_verifier={{code_verifier}}
+&refresh_token={{refresh_token}}
+
 
 ###
 
 # Double Calucator API
-GET http://localhost:5001/api/double/3
+GET {{api}}/double/3
 Authorization: Bearer {{access_token}}
 
 ###
 
 # Square Calucator API
-GET http://localhost:5001/api/square/3
+GET {{api}}/square/3
 Authorization: Bearer {{access_token}}
 
 ###
 
 # Tokeninfo Calucator API
-GET http://localhost:5001/api/tokeninfo
+GET {{api}}/identity
 Authorization: Bearer {{access_token}}
 
 ###
 
 # Revoke refesh token
 POST https://{{tenant}}/oauth/revoke
-Content-Type: application/json
+Content-Type: application/x-www-form-urlencoded
 
-{
-    "client_id": "{{client_id}}",
-    "code_verifier": "{{code_verifier}}",
-    "token": "{{refresh_token}}",
-    "token_type_hint": "refresh_token"
-}
+client_id={{client_id}}
+&code_verifier={{code_verifier}}
+&token={{refresh_token}}
+&token_type_hint=refresh_token
+
 
 ###
 
 # Refresh token -> fails
 POST https://{{tenant}}/oauth/token
-Content-Type: application/json
-
-{
-    "grant_type": "refresh_token",
-    "client_id": "{{client_id}}",
-    "code_verifier": "{{code_verifier}}",
-    "refresh_token": "{{refresh_token}}"
-}
-
-###
-
-# Authorize at local IdentityServer4
-GET http://localhost:5000/connect/authorize?state=l337&redirect_uri=https%3A%2F%2Flocalhost%3A5000%2Flogin&code_challenge_method=S256&code_challenge=fnHRVKD2D8uvDuxaZOZ5eWwxdi7WTpEiD0azD4tQ_Hk&client_id=4lPn9lftQdlVb2u0oCNxyNu4cHVnQyBL&response_type=code&scope=openid%20email%20profile%20offline_access%20calc%3Asquare&audience=calculator-api
-
-###
-
-@code_idsrv = 5b3c9eb70d9ce8a1a51b9e3e0056b5f3c236b3115646b153f2e08848c0e61b31
-
-# Get access token from local IdentityServer4
-# @name token_idsrv
-POST http://localhost:5000/connect/token
 Content-Type: application/x-www-form-urlencoded
 
-grant_type=authorization_code
-&client_id=4lPn9lftQdlVb2u0oCNxyNu4cHVnQyBL
-&code_verifier=6QgEbN_9X6wG9U5MZjAxwjXu9SfFs59Es4RSdGi8Djc
-&code={{code_idsrv}}
-&redirect_uri=https%3A%2F%2Flocalhost%3A5000%2Flogin
+grant_type=refresh_token
+&client_id={{client_id}}
+&code_verifier={{code_verifier}}
+&refresh_token={{refresh_token}}

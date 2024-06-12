@@ -2,7 +2,8 @@
     "rest-client.environmentVariables": {
         "$shared": {
             "tenant": "[TENANT].eu.auth0.com",
-            "audience": "calculator-api",
+            "api": "https://localhost:6001",
+            "tenant": "apisummit.eu.auth0.com",
             "audience": "http://calculator-api",
 
             // ---
