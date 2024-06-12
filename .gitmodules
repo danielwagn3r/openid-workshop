@@ -28,3 +28,6 @@
 [submodule "AuthServices/duende-identityserver-sample"]
 	path = AuthServices/duende-identityserver-sample
 	url = https://github.com/danielwagn3r/duende-identityserver-sample.git
+[submodule "Clients/oauth2-client-credential-grant"]
+	path = Clients/oauth2-client-credential-grant
+	url = https://github.com/danielwagn3r/oauth2-client-credential-grant.git
